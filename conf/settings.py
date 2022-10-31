@@ -39,8 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
+
+    # 3rd Party
+    'rest_framework',
+    'rest_authtoken',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
 
     # Local
     'accounts.apps.AccountsConfig',
