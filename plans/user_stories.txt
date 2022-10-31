@@ -1,0 +1,12 @@
+Feature Card
+
+Start Scorecard
+    -Opens up a new blank scorecard with the ability to change the hole distance,
+    par, who is playing, and course layout per player.
+
+Nearby Courses
+    -Using Google Maps API, shows nearby courses within a certain raidius in miles.
+
+History
+    -Shows all previous scorecards played.
+    
