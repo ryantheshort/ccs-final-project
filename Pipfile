@@ -12,8 +12,8 @@ psycopg2-binary = "~=2.9.4"
 djangorestframework = "~=3.14.0"
 django-allauth = "~=0.51.0"
 django-rest-authtoken = "~=2.1.4"
-dj-rest-auth = {extras = ["with_social"], version = "*"}
 pillow = "~=9.3.0"
+dj-rest-auth = "~=2.2.5"
 
 [dev-packages]
 
