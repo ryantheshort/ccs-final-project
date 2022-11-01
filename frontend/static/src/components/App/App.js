@@ -1,8 +1,56 @@
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import './App.css';
 
 function App() {
-  return 
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const usernameLocal = () => {
+      if (localStorage.getItem("username")) {
+        usernameSet(localStorage.getItem("username"));
+      }
+    };
+    usernameLocal();
+  }, []);
+
+  const loginApp = (passUsername, rememberMe) => {
+    setUsername(passUsername);
+    if (passUsername && rememberMe) {
+      // Username is set in local storage if rememberMe is True.
+      localStorage.setItem("username", passUsername);
+    }
+    // When logout button is pressed, remove the item from localStorage and sessionStorage
+    if (!passUsername) {
+      localStorage.removeItem("username");
+      sessionStorage.clear();
+    }
+  };
+
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Navbar username={username} appLogin={appLogin} />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={(props) => (
+              <Play {...props} appLogin={appLogin} username={username} />
+            )}
+          />
+          <Route path="/about" exact component={About} />
+          <Route
+            path="/history"
+            exact
+            render={(props) => <History {...props} username={username} />}
+          />
+          {/* <Route path="/account" exact component={Account} /> */}
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
   
   
 }
