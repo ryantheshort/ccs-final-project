@@ -15,7 +15,7 @@ function App() {
     usernameLocal();
   }, []);
 
-  const loginApp = (passUsername, rememberMe) => {
+  const appLogin = (passUsername, rememberMe) => {
     setUsername(passUsername);
     if (passUsername && rememberMe) {
       // Username is set in local storage if rememberMe is True.
@@ -31,20 +31,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar username={username} appLogin={appLogin} />
+        <Form username={username} appLogin={appLogin} />
         <Switch>
           <Route
-            path="/"
-            exact
-            render={(props) => (
-              <Play {...props} appLogin={appLogin} username={username} />
-            )}
-          />
-          <Route path="/about" exact component={About} />
-          <Route
-            path="/history"
-            exact
-            render={(props) => <History {...props} username={username} />}
           />
           {/* <Route path="/account" exact component={Account} /> */}
         </Switch>
