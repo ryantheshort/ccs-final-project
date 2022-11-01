@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'frontend.apps.FrontendConfig',
     'api.apps.ApiConfig',
-    
+    'profiles.apps.ProfilesConfig',
 ]
 
 REST_FRAMEWORK = {
@@ -184,3 +184,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#staticfiles-dirs
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend/static/build/static/'),)
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/static/')
+
+# Token Serializer
+
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'accounts.serializers.TokenSerializer',
+}
