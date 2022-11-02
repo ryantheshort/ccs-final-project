@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
-import './App.css';
+import '../../styles/App.css';
+import RegisterForm from "../LoginAndRegister/RegisterForm";
+import LoginForm from "../LoginAndRegister/LoginForm";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -28,15 +30,30 @@ function App() {
     }
   };
 
+  const response = await fetch("/dj-rest-auth/logout/", options).catch(handleError);
+  if (!response.ok) {
+    throw new Error("Network response was not OK");
+  } else {
+    Cookies.remove("Authorization");
+    window.localStorage.removeItem("userState");
+    setUserState(INITIAL_STATE);
+  };
+
   return (
     <BrowserRouter>
       <div className="App">
-        <Form username={username} appLogin={appLogin} />
-        <Switch>
+        <Navbar username={username} appLogin={appLogin} />
+        <Routes>
           <Route
+          path="login"
+          element={<LoginForm userState={userState} setUserState={setUserState} />}
+          />
+          <Route
+          path="register"
+          element={<RegisterForm userState={userState} setUserState={setUserState} />}
           />
           {/* <Route path="/account" exact component={Account} /> */}
-        </Switch>
+        </Routes>
       </div>
     </BrowserRouter>
   );
