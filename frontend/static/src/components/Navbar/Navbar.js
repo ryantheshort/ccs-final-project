@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
+import Cookies from 'js-cookie';
+import { handleError } from "../../utils/helpers";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io5";
 
 function Navbar(props) {
-    const { username } = props;
+    const { userDetails, setUserDetails } = props;
     const [sidebar, setSidebar] = useState(false);
+    const navigate = useNavigate();
   
     // Toggles the navigation menu
     const showSidebar = () => setSidebar(!sidebar);
@@ -16,6 +19,36 @@ function Navbar(props) {
     sidebar
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = null);
+
+
+
+
+
+      const handleLogout = async (e) => {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": Cookies.get("csrftoken"),
+          },
+        };
+        
+        const response = await fetch("/dj-rest-auth/logout/", options).catch(handleError);
+        if (!response.ok) {
+          throw new Error("Network response was not OK");
+        } else {
+          const data = await response.json();
+          Cookies.remove("Authorization");
+          localStorage.removeItem('username');
+          navigate("/login/")
+          setUserDetails({
+            isAuth: false,
+            username: null
+          });
+         
+        }
+    
+      };
 
     return (
         <>
@@ -44,7 +77,7 @@ function Navbar(props) {
               alt="Website Logo"
             // Feature Card Logo above
             />
-            <h2 className="username">{username ? username : ""}</h2>
+            <h2 className="username">{userDetails && userDetails.username}</h2>
           </li>
           <IconContext.Provider value={{ color: "#1e1e1e" }}>
             <li className="nav-text" onClick={showSidebar}>
@@ -53,7 +86,7 @@ function Navbar(props) {
                 <span>Start Scorecard</span>
               </NavLink>
             </li>
-            {username ? (
+            {userDetails?.isAuth ? (
               <>
                 <li className="nav-text" onClick={showSidebar}>
                   <NavLink to="/history" activeClassName="active" exact={true}>
@@ -80,7 +113,7 @@ function Navbar(props) {
                     <IconContext.Provider value={{ color: "#B10000" }}>
                       <IoIcons.IoPowerOutline />
                     </IconContext.Provider>
-                    <span>Logout</span>
+                    <button type="button" onClick={handleLogout}>Logout</button>
                   </NavLink>
                 </li>
               </>
