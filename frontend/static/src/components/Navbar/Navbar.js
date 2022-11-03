@@ -81,7 +81,7 @@ function Navbar(props) {
           </li>
           <IconContext.Provider value={{ color: "#1e1e1e" }}>
             <li className="nav-text" onClick={showSidebar}>
-              <NavLink to="/" activeClassName="active" exact={true}>
+              <NavLink to="/" className="active" exact="true">
                 
                 <span>Start Scorecard</span>
               </NavLink>
@@ -89,13 +89,13 @@ function Navbar(props) {
             {userDetails?.isAuth ? (
               <>
                 <li className="nav-text" onClick={showSidebar}>
-                  <NavLink to="/history" activeClassName="active" exact={true}>
+                  <NavLink to="/history" className="active" exact="true">
                     <FaIcons.FaHistory />
                     <span>Game History</span>
                   </NavLink>
                 </li>
                 {/* <li className="nav-text" onClick={showSidebar}>
-                  <NavLink to="/account" activeClassName="active" exact={true}>
+                  <NavLink to="/account" className="active" exact={true}>
                     <MdIcons.MdAccountCircle />
                     <span>Account</span>
                   </NavLink>
@@ -103,7 +103,7 @@ function Navbar(props) {
                 <li className="nav-text">
                   <NavLink
                     to="/"
-                    exact={true}
+                    exact="true"
                     className="logout-btn"
                     onClick={() => {
                       showSidebar();

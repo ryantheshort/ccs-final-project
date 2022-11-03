@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Cookies from "js-cookie";
 import '../../styles/App.css';
 import RegisterForm from "../Auth/RegisterForm";
 import LoginForm from "../Auth/LoginForm";
-import Navbar from "../Navbar/Navbar";
-import { useNavigate, Link } from "react-router-dom";
+import NavLink from "../Navbar/Navbar";
 import { handleError } from "../../utils/helpers";
 
 import Button from 'react-bootstrap/Button';
@@ -68,7 +67,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar userDetails={userDetails} setUserDetails={setUserDetails} />
+        <NavLink userDetails={userDetails} setUserDetails={setUserDetails} />
         <Routes>
           <Route
           path="login"

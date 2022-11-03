@@ -76,7 +76,7 @@ function LoginForm({ setUserDetails }) {
                 Login
               </Button>
               <p>
-                Don't have an account? Click <Link to={"/register"}>here</Link> to create one.
+                Don't have an account? Click <Link to={"/create-player"}>here</Link> to create one.
               </p>
             </div>
           </Form>
