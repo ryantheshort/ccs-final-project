@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useNavigate, NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
 import Cookies from 'js-cookie';
@@ -6,22 +8,22 @@ import { handleError } from "../../utils/helpers";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io5";
+import FCbar from "../Images/FCbar.png";
 
 function Navbar(props) {
     const { userDetails, setUserDetails } = props;
-    const [sidebar, setSidebar] = useState(false);
+    // const [sidebar, setSidebar] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const navigate = useNavigate();
   
     // Toggles the navigation menu
-    const showSidebar = () => setSidebar(!sidebar);
+    // const showSidebar = () => setSidebar(!sidebar);
   
     // Locks scrolling when the navigation menu is active
-    sidebar
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = null);
-
-
-
 
 
       const handleLogout = async (e) => {
@@ -54,33 +56,25 @@ function Navbar(props) {
         <>
         <div className="banner">
           <div className="navbar">
-            <NavLink to="#" className="menu-bars" onClick={showSidebar}>
+            <NavLink variant="primary" className="menu-bars" onClick={handleShow}>
               <FaIcons.FaBars />
             </NavLink>
-            <h2 className="main-title" onClick={showSidebar}>
-              Feature Card
-            </h2>
           </div>
         </div>
-        {sidebar ? (
-        <div className="nav-shade" onClick={showSidebar}></div>
-      ) : undefined}
-      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+        <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+        <Offcanvas.Title> <img className="fcbar" src={FCbar} alt="logo-pic" />
+        </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
         <ul className="nav-menu-items">
-          <li className="navbar-toggle">
-            <NavLink to="#" className="menu-bars" onClick={showSidebar}>
+          
+            <NavLink to="#" className="menu-bars">
               <AiIcons.AiOutlineClose />
             </NavLink>
-            <img
-              className="nav-logo"
-              src={`${process.env.PUBLIC_URL}`}
-              alt="Website Logo"
-            // Feature Card Logo above
-            />
             <h2 className="username">{userDetails && userDetails.username}</h2>
-          </li>
           <IconContext.Provider value={{ color: "#1e1e1e" }}>
-            <li className="nav-text" onClick={showSidebar}>
+            <li className="nav-text" >
               <NavLink to="/scorecard" className="active" exact="true">
                 
                 <span>Start Scorecard</span>
@@ -88,25 +82,20 @@ function Navbar(props) {
             </li>
             {userDetails?.isAuth ? (
               <>
-                <li className="nav-text" onClick={showSidebar}>
+                <li className="nav-text" >
                   <NavLink to="/history" className="active" exact="true">
                     <FaIcons.FaHistory />
                     <span>Game History</span>
                   </NavLink>
                 </li>
-                {/* <li className="nav-text" onClick={showSidebar}>
-                  <NavLink to="/account" className="active" exact={true}>
-                    <MdIcons.MdAccountCircle />
-                    <span>Account</span>
-                  </NavLink>
-                </li> */}
+              
                 <li className="nav-text">
                   <NavLink
                     to="/"
                     exact="true"
                     className="logout-btn"
                     onClick={() => {
-                      showSidebar();
+                      // showSidebar();
                       props.appLogin("");
                     }}
                   >
@@ -117,10 +106,12 @@ function Navbar(props) {
                   </NavLink>
                 </li>
               </>
+            
             ) : undefined}
-          </IconContext.Provider>
+            </IconContext.Provider>
         </ul>
-        </nav>
+          </Offcanvas.Body>
+        </Offcanvas>
         </>
     );
 };
