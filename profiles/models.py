@@ -9,3 +9,4 @@ class PlayerProfile(models.Model):
     is_verified = models.BooleanField(default=False)
     first_name = models.CharField(max_length=225, null=True)
     last_name = models.CharField(max_length=225, null=True)
+    history = models.CharField(max_length=225, null=True)

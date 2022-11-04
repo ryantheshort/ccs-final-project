@@ -6,9 +6,7 @@ import RegisterForm from "../Auth/RegisterForm";
 import LoginForm from "../Auth/LoginForm";
 import NavLink from "../Navbar/Navbar";
 import { handleError } from "../../utils/helpers";
-
-import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
+import Home from "../Home/Home";
 
 function App() {
   const [userDetails, setUserDetails] = useState(null);
@@ -69,6 +67,7 @@ function App() {
       <div className="App">
         <NavLink userDetails={userDetails} setUserDetails={setUserDetails} />
         <Routes>
+          <Route index element={<Home />} />
           <Route
           path="login"
           element={<LoginForm setUserDetails={setUserDetails} />}

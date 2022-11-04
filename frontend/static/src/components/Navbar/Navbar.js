@@ -81,7 +81,7 @@ function Navbar(props) {
           </li>
           <IconContext.Provider value={{ color: "#1e1e1e" }}>
             <li className="nav-text" onClick={showSidebar}>
-              <NavLink to="/" className="active" exact="true">
+              <NavLink to="/scorecard" className="active" exact="true">
                 
                 <span>Start Scorecard</span>
               </NavLink>

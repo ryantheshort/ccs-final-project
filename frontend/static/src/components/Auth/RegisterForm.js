@@ -92,9 +92,6 @@ function RegisterForm({ setUserDetails }) {
                         onChange={handleInput}
                         />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="rememberMe">
-                    <Form.Check type="checkbox" label="Remember Me" />
-                </Form.Group>
                 <Button variant="dark" type="submit">
                     Submit
                 </Button>

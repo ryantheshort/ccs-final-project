@@ -71,12 +71,15 @@ function LoginForm({ setUserDetails }) {
                 onChange={handleInput}
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="rememberMe">
+                    <Form.Check type="checkbox" label="Remember Me" />
+            </Form.Group>
             <div>
               <Button variant="dark" type="submit">
                 Login
               </Button>
               <p>
-                Don't have an account? Click <Link to={"/create-player"}>here</Link> to create one.
+                Don't have an account? Click <Link to={"/register"}>here</Link> to create one.
               </p>
             </div>
           </Form>
