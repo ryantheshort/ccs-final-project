@@ -38,12 +38,17 @@ function LoginForm({ setUserDetails }) {
           const data = await response.json();
           Cookies.set("Authorization", `Token ${data.key}`);
           localStorage.setItem('username', data.username);
-          navigate("/")
+          // navigate("/home")
           setUserDetails({
             isAuth: true,
-            username: data.username
+            username: data.username,
+            admin: data.is_superuser,
           });
-         
+          if (state.is_superuser === true) {
+            navigate("/home")
+        } else if (state.is_superuser !== true) {
+            navigate("/home")
+        }
         }
       };
 
@@ -75,7 +80,7 @@ function LoginForm({ setUserDetails }) {
                     <Form.Check type="checkbox" label="Remember Me" />
             </Form.Group>
             <div>
-              <Button variant="dark" type="submit">
+              <Button className="form-button" variant="dark" type="submit">
                 Login
               </Button>
               <p>

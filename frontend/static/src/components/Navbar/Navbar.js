@@ -74,14 +74,15 @@ function Navbar(props) {
             </NavLink>
             <h2 className="username">{userDetails && userDetails.username}</h2>
           <IconContext.Provider value={{ color: "#1e1e1e" }}>
+
+            {userDetails?.isAuth ? (
+              <>
             <li className="nav-text" >
               <NavLink to="/scorecard" className="active" exact="true">
                 
                 <span>Start Scorecard</span>
               </NavLink>
             </li>
-            {userDetails?.isAuth ? (
-              <>
                 <li className="nav-text" >
                   <NavLink to="/history" className="active" exact="true">
                     <FaIcons.FaHistory />

@@ -76,7 +76,7 @@ function App() {
           path="register"
           element={<RegisterForm setUserDetails={setUserDetails} />}
           />
-          {/* <Route path="/account" exact component={Account} /> */}
+          {/* <Route path="/home" exact component={Home} /> */}
         </Routes>
       </div>
     </BrowserRouter>
