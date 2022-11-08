@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, Nav } from "react-router-dom";
 import { IconContext } from "react-icons";
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
@@ -9,6 +9,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io5";
 import FCbar from "../Images/FCbar.png";
+import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
 
 function Navbar(props) {
     const { userDetails, setUserDetails } = props;
@@ -73,39 +74,41 @@ function Navbar(props) {
               <AiIcons.AiOutlineClose />
             </NavLink>
             <h2 className="username">{userDetails && userDetails.username}</h2>
-          <IconContext.Provider value={{ color: "#1e1e1e" }}>
+          <IconContext.Provider value={{ color: "#333333" }}>
 
             {userDetails?.isAuth ? (
               <>
             <li className="nav-text" >
-              <NavLink to="/scorecard" className="active" exact="true">
-                
-                <span>Start Scorecard</span>
+              <NavLink 
+              to="/scorecard" 
+              className="start-scorecard-btn" 
+              exact="true"
+              type="button" onClick={useNavigate}>Start Scorecard
               </NavLink>
             </li>
-                <li className="nav-text" >
-                  <NavLink to="/history" className="active" exact="true">
-                    <FaIcons.FaHistory />
-                    <span>Game History</span>
-                  </NavLink>
-                </li>
-              
-                <li className="nav-text">
-                  <NavLink
-                    to="/"
-                    exact="true"
-                    className="logout-btn"
-                    onClick={() => {
-                      // showSidebar();
-                      props.appLogin("");
-                    }}
-                  >
-                    <IconContext.Provider value={{ color: "#B10000" }}>
-                      <IoIcons.IoPowerOutline />
-                    </IconContext.Provider>
-                    <button type="button" onClick={handleLogout}>Logout</button>
-                  </NavLink>
-                </li>
+            <li className="nav-text" >
+              <NavLink to="/history" className="active" exact="true">
+                <FaIcons.FaHistory />
+                <span>Game History</span>
+              </NavLink>
+            </li>
+          
+            <li className="nav-text">
+              <NavLink
+                to="/"
+                exact="true"
+                className="logout-btn"
+                onClick={() => {
+                  // showSidebar();
+                  props.appLogin("");
+                }}
+              >
+                <IconContext.Provider value={{ color: "#B10000" }}>
+                  <IoIcons.IoPowerOutline />
+                </IconContext.Provider>
+                <button type="button" onClick={handleLogout}>Logout</button>
+              </NavLink>
+            </li>
               </>
             
             ) : undefined}

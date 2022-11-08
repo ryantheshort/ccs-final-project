@@ -42,12 +42,11 @@ function LoginForm({ setUserDetails }) {
           setUserDetails({
             isAuth: true,
             username: data.username,
-            admin: data.is_superuser,
           });
           if (state.is_superuser === true) {
             navigate("/home")
         } else if (state.is_superuser !== true) {
-            navigate("/home")
+            navigate("/")
         }
         }
       };

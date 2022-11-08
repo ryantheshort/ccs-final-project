@@ -86,7 +86,7 @@ function RegisterForm({ setUserDetails }) {
                 <Form.Group className="mb-3" controlId="password2">
                     <Form.Control
                         type="password"
-                        placeholder="Enter password again"
+                        placeholder="Confirm Password"
                         name="password2"
                         value={state.password2}
                         onChange={handleInput}

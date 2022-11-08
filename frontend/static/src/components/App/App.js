@@ -7,6 +7,7 @@ import LoginForm from "../Auth/LoginForm";
 import NavLink from "../Navbar/Navbar";
 import { handleError } from "../../utils/helpers";
 import Home from "../Home/Home";
+import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
 
 function App() {
   const [userDetails, setUserDetails] = useState(null);
@@ -77,6 +78,10 @@ function App() {
           element={<RegisterForm setUserDetails={setUserDetails} />}
           />
           {/* <Route path="/home" exact component={Home} /> */}
+          <Route
+          path="scorecard"
+          element={<LiveHolesScorecard setUserDetails={setUserDetails} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
