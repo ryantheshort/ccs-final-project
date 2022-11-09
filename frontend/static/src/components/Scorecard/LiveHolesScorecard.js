@@ -5,6 +5,7 @@ import '../../styles/LiveHolesScorecard.css';
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
 import Button from 'react-bootstrap/Button';
+import LiveScorecard from './LiveScorecard';
 
 function LiveHolesScorecard(props) {
   const [index, setIndex] = useState(0);
@@ -18,7 +19,7 @@ function LiveHolesScorecard(props) {
   const DecrementCount = () => {
     if (count > 0) {
     setCount(count => count - 1);
-  } 
+  }
   };
 
   const handleSelect = (selectedIndex, e) => {
@@ -254,7 +255,7 @@ function LiveHolesScorecard(props) {
       </Carousel.Item>
 {/* TOTAL SCORECARD */}
       <Carousel.Item>
-
+       <LiveScorecard /> 
       </Carousel.Item>
     </Carousel>
   );

@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import { useNavigate, Link } from "react-router-dom";
+
 
 function LiveScorecard() {
   return (
@@ -8,7 +8,7 @@ function LiveScorecard() {
         <tr className='table-hole'>
           <th>Hole</th>
           {Array.from({ length: 18 }).map((_, index) => (
-            <th key={index}>Table heading</th>
+            <th key={index + 1}>{"0"}</th>
           ))}
         </tr>
       </thead>
@@ -25,8 +25,8 @@ function LiveScorecard() {
             <td key={index}>Table cell {index}</td>
           ))}
         </tr>
-        <tr className='table-players'>
-          <td>Players</td>
+        <tr className='table-strokes'>
+          <td>Score</td>
           {Array.from({ length: 18 }).map((_, index) => (
             <td key={index}>Table cell {index}</td>
           ))}
