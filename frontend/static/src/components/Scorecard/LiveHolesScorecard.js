@@ -4,25 +4,28 @@ import Form from 'react-bootstrap/Form';
 import '../../styles/LiveHolesScorecard.css';
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
+import Button from 'react-bootstrap/Button';
 
 function LiveHolesScorecard(props) {
   const [index, setIndex] = useState(0);
- 
+
+  const [count, setCount] = useState(0);
+
+  const IncrementCount = () => {
+    setCount(count => count + 1);
+  };
+
+  const DecrementCount = () => {
+    if (count > 0) {
+    setCount(count => count - 1);
+  } 
+  };
+
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
   const { userDetails, setUserDetails } = props;
-  // const [sidebar, setSidebar] = useState(false);
-  const [show, setShow] = useState(false);
-
-
-
-  // Toggles the navigation menu
-  // const showSidebar = () => setSidebar(!sidebar);
-
-  // Locks scrolling when the navigation menu is active
-
 
     const handleLogout = async (e) => {
       const options = {
@@ -58,7 +61,7 @@ function LiveHolesScorecard(props) {
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name="par-number" required min="3" max="5"></input></p>
             <p> <input type="number" id="distance" name="hole-distance" required></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username}</h2>
+            <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number"> {count} </span><Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
       </Carousel.Item>
@@ -69,7 +72,7 @@ function LiveHolesScorecard(props) {
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name="par-number" required min="3" max="5"></input></p>
             <p> <input type="number" id="distance" name="hole-distance" required></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username}</h2>
+            <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number"> {count} </span><Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
           </Form>
       </Carousel.Item>
@@ -80,45 +83,45 @@ function LiveHolesScorecard(props) {
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name="par-number" required min="3" max="5"></input></p>
             <p> <input type="number" id="distance" name="hole-distance" required></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username}</h2>
+            <h2 className="username">{userDetails && userDetails.username}<Button onClick={DecrementCount}>-</Button> {count}{" "}<Button onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
       </Carousel.Item>
 {/* HOLE 4 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name="par-number" required min="3" max="5"></input></p>
             <p> <input type="number" id="distance" name="hole-distance" required></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username}</h2>
+            <h2 className="username">{userDetails && userDetails.username}<Button onClick={DecrementCount}>-</Button> {count}{" "}<Button onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
       </Carousel.Item>
 {/* HOLE 4 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name="par-number" required min="3" max="5"></input></p>
             <p> <input type="number" id="distance" name="hole-distance" required></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username}</h2>
+            <h2 className="username">{userDetails && userDetails.username}<Button onClick={DecrementCount}>-</Button> {count}{" "}<Button onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
       </Carousel.Item>
 {/* HOLE 5 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name="par-number" required min="3" max="5"></input></p>
             <p> <input type="number" id="distance" name="hole-distance" required></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username}</h2>
+            <h2 className="username">{userDetails && userDetails.username}<Button onClick={DecrementCount}>-</Button> {count}{" "}<Button onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
       </Carousel.Item>
 {/* HOLE 6 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -129,7 +132,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 7 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -140,7 +143,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 8 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -151,7 +154,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 9 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -162,7 +165,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 10 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -173,7 +176,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 11 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -184,7 +187,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 12 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -195,7 +198,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 13 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -206,7 +209,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 14 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -217,7 +220,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 15 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -228,7 +231,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 16 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -239,7 +242,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* HOLE 17 */}
-<Carousel.Item>
+      <Carousel.Item>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
@@ -250,7 +253,7 @@ function LiveHolesScorecard(props) {
         </Form>
       </Carousel.Item>
 {/* TOTAL SCORECARD */}
-<Carousel.Item>
+      <Carousel.Item>
 
       </Carousel.Item>
     </Carousel>
