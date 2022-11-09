@@ -8,6 +8,7 @@ import NavLink from "../Navbar/Navbar";
 import { handleError } from "../../utils/helpers";
 import Home from "../Home/Home";
 import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
+import '../../styles/LiveHolesScorecard.css';
 
 function App() {
   const [userDetails, setUserDetails] = useState(null);
@@ -80,7 +81,7 @@ function App() {
           {/* <Route path="/home" exact component={Home} /> */}
           <Route
           path="scorecard"
-          element={<LiveHolesScorecard setUserDetails={setUserDetails} />}
+          element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />}
           />
         </Routes>
       </div>
