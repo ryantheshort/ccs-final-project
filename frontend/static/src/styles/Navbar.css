@@ -1,0 +1,9 @@
+img {
+    display: flex;
+    max-width: 100%;
+    position: center;
+}
+.banner {
+    border-color: linear-gradient(#946f3c, #dece8c);
+    border-width: 3px;
+}

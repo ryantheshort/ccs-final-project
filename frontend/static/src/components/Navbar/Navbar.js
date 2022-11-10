@@ -10,6 +10,7 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io5";
 import FCbar from "../Images/FCbar.png";
 import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
+import "../../styles/Navbar.css";
 
 function Navbar(props) {
     const { userDetails, setUserDetails } = props;

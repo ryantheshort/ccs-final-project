@@ -1,6 +1,5 @@
 import Table from 'react-bootstrap/Table';
 import React, { useState } from 'react';
-import LiveHolesScorecard from './LiveHolesScorecard';
 import jsonData from './data.json';
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
