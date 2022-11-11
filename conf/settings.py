@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'frontend.apps.FrontendConfig',
     'api.apps.ApiConfig',
-    'profiles.apps.ProfilesConfig',
+    
 ]
 
 REST_FRAMEWORK = {

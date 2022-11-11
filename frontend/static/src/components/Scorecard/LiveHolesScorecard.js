@@ -7,72 +7,52 @@ import { handleError } from "../../utils/helpers";
 import Button from 'react-bootstrap/Button';
 import LiveScorecard from './LiveScorecard';
 
-// function LiveHolesScorecard(props) {
+const initialState = Array.from({length: 18}).map((item,index) => (
+  {name: `hole${index + 1}`, par: "", distance: "", score: ""}
+));
 
 function LiveHolesScorecard(props) {
   const [index, setIndex] = useState(0);
   // const [count, setCount] = useState(0);
 
   // Values for table
-  const [par, setPar] = useState('');
-  const [hole, setHole] = useState('')
-  const [distance, setDistance] = useState('');
-  const [score, setScore] = useState(0);
+  const [scorecard, setScorecard] = useState(initialState);
 
-  const [scorecard, setScorecard] = useState({
-    hole1: {
-      par: null,
-      distance: null,
-      score: null,
-    },
-    hole2: {
-      par: null,
-      distance: null,
-      score: null,
-    },
-    hole3: {
-      par: null,
-      distance: null,
-      score: null,
-    },
-    hole4: {
-      par: null,
-      distance: null,
-      score: null,
-    }
-  })
+  const [score, setScore] = useState(initialState);
+  // const [scorecard, setScorecard] = useState({
+  //   hole1: {
+  //     par: null,
+  //     distance: null,
+  //     score: null,
+  //   },
+  //   hole2: {
+  //     par: null,
+  //     distance: null,
+  //     score: null,
+  //   },
+  //   hole3: {
+  //     par: null,
+  //     distance: null,
+  //     score: null,
+  //   },
+  //   hole4: {
+  //     par: null,
+  //     distance: null,
+  //     score: null,
+  //   },
+  // });
 
-  const changePar = (e) => {
-    setHole(e.target.name);
-    setScorecard((scorecard) => ({...scorecard, [e.target.name]: { par: e.target.value} })); 
-    setPar(e.target.value);
-    console.log({scorecard})
+  const handleChange = (e) => {
+    const { name, id, value }  = e.target;
+    setScorecard(scorecard.map(card => {
+      if (card.name === name){
+        return {
+          ...card,
+          [id]: value,
+        }
+      } else return card;
+    }))
   };
-
-  const changeDistance = (e) => {
-    setDistance(e.target.value);
-  };
-
-  const changeScore = (e) => {
-    setScore(e.target.value);
-  };
-
-  const transferValue = (e) => {
-    e.preventDefault();
-    const val = {
-      hole,
-      par,
-      distance,
-      score,
-    };
-    // setScorecard({val, })
-  };
-
-  // const clearState = () => {
-  //   setPar('');
-  //   setDistance('');
-  //   setScore('');
-  // };
 
 // Plus and Minus Buttons
   const IncrementCount = () => {
@@ -125,10 +105,10 @@ function LiveHolesScorecard(props) {
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
-            <p>Par <input type="number" id={`par-${index}`} name={`hole${index + 1}`} required min="3" max="5" onChange={changePar}></input></p>
-            <p> <input type="number" id={`distance-${index}`} name="hole-distance" required onChange={changeDistance}></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number"  value={score} onChange={changeScore}> {score} </span><Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
-            <button onClick={transferValue}> Submit</button>
+            <p>Par <input type="number" id="par" name={`hole${index + 1}`} required min="3" max="5" onChange={handleChange}></input></p>
+            <p> <input type="number" id="distance" name="hole-distance" required onChange={handleChange}></input>ft</p>
+            <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {score} <Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
+            
           </Form.Group>
         </Form>
       </Carousel.Item>
