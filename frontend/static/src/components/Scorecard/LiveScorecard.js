@@ -9,7 +9,10 @@ function LiveScorecard(props) {
 
   const [scoreData, setScoreData] = useState(jsonData);
 
+
+
   const tableColumns = scoreData.map((info) => {
+    console.log(info)
     return (
       <tr>
         <td>{info.id}</td>
@@ -20,8 +23,9 @@ function LiveScorecard(props) {
     );
   });
 
-  const { userDetails, setUserDetails } = props;
+  const { userDetails, setUserDetails, scorecard } = props;
 
+  console.log(scorecard)
   const handleLogout = async (e) => {
     const options = {
       method: "POST",
@@ -57,21 +61,50 @@ function LiveScorecard(props) {
 
   return (
     <div>
-    <Table responsive="sm">
-      <thead>
-        <tr>HOLE</tr>
-        <tr>DISTANCE</tr>
-        <tr>Par</tr>
-        <tr>{userDetails && userDetails.username}</tr>
-      </thead>
-      <tbody>{tableColumns}</tbody>
-    </Table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Par</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Hole 1</th>
+      <td>{scorecard.hole1.par}</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
    
     </div>
   );
 }
 
-
+{/* <Table responsive="sm">
+<thead>
+  <tr>HOLE</tr>
+  <tr>DISTANCE</tr>
+  <tr>Par</tr>
+  <tr>{userDetails && userDetails.username}</tr>
+</thead>
+<tbody>{tableColumns}</tbody>
+</Table> */}
 
   //   <Table responsive="md">
   //     <thead>
