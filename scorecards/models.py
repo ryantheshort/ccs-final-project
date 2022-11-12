@@ -1,15 +1,16 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
-class ScorecardId(models.model):
-    course = models.CharField()
-    date =  models.DateTimeField
-    players = models.ForeignKey('User')
+class ScorecardId(models.Model):
+    course = models.CharField(max_length=55)
+    date =  models.DateTimeField()
+    players = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
-class Hole(models.model):
+class Hole(models.Model):
     par = models.IntegerField()
     distance = models.IntegerField()
     score = models.IntegerField()
-    playerId = models.ForeignKey('self', on_delete=models.CASCADE)
-    ScorecardId = models
+    playerId = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ScorecardId = models.ForeignKey(ScorecardId, on_delete=models.CASCADE)

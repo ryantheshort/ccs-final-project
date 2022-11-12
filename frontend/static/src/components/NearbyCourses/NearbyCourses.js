@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-
+import '../../styles/NearbyCourses.css';
 function NearbyCourses() {
-    return <h1>Find Courses</h1>
-}
+    return<h1>Find Courses</h1>
+            
+};
 
 export default NearbyCourses;
