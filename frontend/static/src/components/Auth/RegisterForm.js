@@ -54,8 +54,8 @@ function RegisterForm({ setUserDetails }) {
             isAuth: true,
             username: data.username 
            });
-          if (userType === "player") {
-            navigate("/create-player");
+          if (checkSamePass === true) {
+            navigate("/login");
           }
         }
       };
