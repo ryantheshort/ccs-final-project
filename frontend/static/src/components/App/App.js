@@ -9,6 +9,7 @@ import { handleError } from "../../utils/helpers";
 import Home from "../Home/Home";
 import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
 import '../../styles/LiveHolesScorecard.css';
+import NearbyCourses from "../NearbyCourses/NearbyCourses";
 
 function App() {
   const [userDetails, setUserDetails] = useState(null);
@@ -82,6 +83,10 @@ function App() {
           <Route
           path="scorecard"
           element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />}
+          />
+          <Route
+          path="nearbycourses"
+          element={<NearbyCourses userDetails={userDetails}/>}
           />
         </Routes>
       </div>

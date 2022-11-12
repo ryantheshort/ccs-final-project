@@ -10,6 +10,7 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io5";
 import FCbar from "../Images/FCbar.png";
 import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
+import NearbyCourses from "../NearbyCourses/NearbyCourses";
 import "../../styles/Navbar.css";
 
 function Navbar(props) {
@@ -70,13 +71,25 @@ function Navbar(props) {
         </Offcanvas.Header>
         <Offcanvas.Body>
         <ul className="nav-menu-items">
-          
-            <NavLink to="#" className="menu-bars">
-              <AiIcons.AiOutlineClose />
-            </NavLink>
             <h2 className="username">{userDetails && userDetails.username}</h2>
           <IconContext.Provider value={{ color: "#333333" }}>
+          <li className="nav-text ">
+            <NavLink 
+              className="login-form btn-hover" 
+              to="/login"
+              exact="true"
+              type="button"
+              onClick={useNavigate}>Player Login</NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/nearbycourses" 
+                className="nearby-courses-btn"
+                exact="true"
+                type="button" onClick={useNavigate}>Nearby Courses
 
+              </NavLink>
+            </li>
             {userDetails?.isAuth ? (
               <>
             <li className="nav-text" >
@@ -93,7 +106,6 @@ function Navbar(props) {
                 <span>Game History</span>
               </NavLink>
             </li>
-          
             <li className="nav-text">
               <NavLink
                 to="/"
