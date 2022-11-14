@@ -1,21 +1,21 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from .models import ScorecardId
-from .serializers import ScorecardIdSerializer
+from .models import Scorecard
+from .serializers import ScorecardSerializer
 
 # Create your views here.
 class ScorecardsListAPIView(generics.ListCreateAPIView):
-    serializer_class = ScorecardIdSerializer
+    serializer_class = ScorecardSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    queryset = ScorecardId.objects.all()
+    queryset = Scorecard.objects.all()
 
 class LiveScorecardAPIView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ScorecardIdSerializer
+    serializer_class = ScorecardSerializer
     permission_classes = (IsAuthenticated,)
-    queryset = ScorecardId.objects.all()
+    queryset = Scorecard.objects.all()
 
 class HoleListAPIView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ScorecardIdSerializer
+    serializer_class = ScorecardSerializer
     permission_classes = (IsAuthenticated,)
-    queryset = ScorecardId.objects.all()
+    queryset = Scorecard.objects.all()

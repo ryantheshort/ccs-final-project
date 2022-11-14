@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import ScorecardId, Hole
+from .models import Scorecard, Hole
 
-class ScorecardIdSerializer(serializers.ModelSerializer):
+class ScorecardSerializer(serializers.ModelSerializer):
     class Meta: 
-        model = ScorecardId
+        model = Scorecard
         fields="__all__"
 
 class HoleSerializer(serializers.ModelSerializer):
