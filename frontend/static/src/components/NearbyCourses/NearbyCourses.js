@@ -16,3 +16,4 @@ function NearbyCourses() {
 };
 
 export default NearbyCourses;
+

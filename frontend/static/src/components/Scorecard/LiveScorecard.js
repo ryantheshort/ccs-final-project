@@ -1,11 +1,12 @@
 import Table from 'react-bootstrap/Table';
 import React, { useState } from 'react';
-import jsonData from './data.json';
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
 import '../../styles/LiveHolesScorecard.css';
 
 function LiveScorecard(props) {
+
+  
 
   const [scoreData, setScoreData] = useState();
 
@@ -59,6 +60,7 @@ function LiveScorecard(props) {
     setScoreData(updatedScoreData);
   };
 
+  
   return (
     <div>
 <Table striped="columns">
