@@ -5,7 +5,7 @@ from django.conf import settings
 class Scorecard(models.Model):
     course = models.CharField(max_length=55)
     date =  models.DateTimeField()
-    players = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    players = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
 
 class Hole(models.Model):

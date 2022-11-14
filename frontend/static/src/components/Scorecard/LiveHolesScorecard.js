@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Form from 'react-bootstrap/Form';
 import '../../styles/LiveHolesScorecard.css';
@@ -17,6 +17,12 @@ function LiveHolesScorecard(props) {
 
   // Values for table
   const [scorecard, setScorecard] = useState(initialState);
+
+  useEffect(() => {
+    fetch("api/v1/scorecards/")
+    .then((response) => response.json())
+    .then((item) => setScorecard(item));
+  }, [scorecard]);
 
   const [score, setScore] = useState(initialState);
   // const [scorecard, setScorecard] = useState({
@@ -72,13 +78,13 @@ function LiveHolesScorecard(props) {
 
   const { userDetails, setUserDetails } = props;
 
-    const handleLogout = async (e) => {
+    const startScorecard = async (e) => {
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": Cookies.get("csrftoken"),
         },
+        body: JSON.stringify
       };
       
       const response = await fetch("/dj-rest-auth/logout/", options).catch(handleError);
