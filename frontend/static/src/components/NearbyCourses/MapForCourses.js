@@ -1,37 +1,41 @@
-import React from "react";
-import { GoPerson } from "react-icons";
-import { GoogleMap, LoadScript, Marker} from "@react-google-maps/api";
+import React, { useState } from "react";
+import { GoPerson } from "react-icons/go";
+import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
+import basketmarker from "../Images/basketmarker.png";
+import properties from "./properties.json";
 
-const containerStyle = {
-    width: "400px",
-    height: "400px",
-};
+
 
 const center = {
     lat: 34.840190,
     lng: -82.398320
 };
 
+function MapComponent() {
+    const [selectedProperty, setSelectedProperty] = useState(null);
 
+    return (
+        <GoogleMap
+            defaultZoom={10}
+            defaultCenter={center}
+        >
+           
+        </GoogleMap>
+    )
+}
+
+const WrappedMap = withScriptjs(withGoogleMap(MapComponent));
 
 function MapForCourses() {
 
-    // const markerMe = new google.maps.Marker ({
-    //     position: center,
-    //     title: "Me",
-    //     icon: <GoPerson />,
-    // })
-
     return (
-        <LoadScript
-            googleMapsApiKey="AIzaSyBtwbxJr-24ad6yYEC-j1WjAHRiqp2l-Uo"
-        >
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={10}
-            ></GoogleMap>
-    </LoadScript>
+        <WrappedMap
+            googleMapURL= {`https://maps.googleapis.com/maps/api/js?key=AIzaSyBtwbxJr-24ad6yYEC-j1WjAHRiqp2l-Uo&
+            v=3.exp&libraries=geometry,drawing,places&amp;`} 
+            loadingElement={<div style={{ height: "100%"}} />}
+            containerElement={<div style={{ height:"400px"}} />}
+            mapElement={<div style={{ height: "100%"}} />}
+        />
 );
 
 }
