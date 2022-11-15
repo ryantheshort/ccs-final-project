@@ -7,7 +7,7 @@ import LoginForm from "../Auth/LoginForm";
 import NavLink from "../Navbar/Navbar";
 import { handleError } from "../../utils/helpers";
 import Home from "../Home/Home";
-import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
+import NewScorecard from "../Scorecard/NewScorecard";
 import '../../styles/LiveHolesScorecard.css';
 import NearbyCourses from "../NearbyCourses/NearbyCourses";
 
@@ -81,9 +81,13 @@ function App() {
           />
           {/* <Route path="/home" exact component={Home} /> */}
           <Route
-          path="scorecard"
-          element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />}
+          path="scorecards"
+          element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />}
           />
+          {/* <Route
+          path="scorecards"
+          
+          /> */}
           <Route
           path="nearbycourses"
           element={<NearbyCourses userDetails={userDetails}/>}

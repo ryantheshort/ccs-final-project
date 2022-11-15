@@ -13,4 +13,3 @@ class PlayerProfile(models.Model):
     is_verified = models.BooleanField(default=True)
     first_name = models.CharField(max_length=20, null=True)
     last_name = models.CharField(max_length=20, null=True)
-    history = models.CharField(max_length=1000, null=True)
