@@ -1,3 +1,7 @@
-carousel {
+@media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+.Carousel {
     background-color: linear-gradient(#0c0c0c, #3c3c3c)
+}
+
+/* End of Media Query */
 }

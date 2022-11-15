@@ -1,3 +1,5 @@
+@media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+
 #mapContainer {
     background-color: #333333;
     padding: 10px;
@@ -8,4 +10,7 @@
     width: 400px;
     background-color: #333333;
     position: relative;
+}
+
+/* End of Query */
 }
