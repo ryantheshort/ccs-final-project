@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
 import Button from 'react-bootstrap/Button';
 import LiveScorecard from './LiveScorecard';
+import { useParams } from 'react-router-dom';
 
 const initialState = Array.from({length: 18}).map((item,index) => (
   {name: `hole${index + 1}`, par: "", distance: "", score: ""}
@@ -19,7 +20,7 @@ function LiveHolesScorecard(props) {
   const [scorecard, setScorecard] = useState(initialState);
 
   useEffect(() => {
-    fetch("api/v1/scorecards/")
+    fetch("api/v1/scorecards/:scorecards/hole/:hole")
     .then((response) => response.json())
     .then((item) => setScorecard(item));
   }, [scorecard]);

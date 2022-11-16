@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useNavigate, NavLink, Nav } from "react-router-dom";
+import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
@@ -94,7 +94,7 @@ function Navbar(props) {
               <>
             <li className="nav-text" >
               <NavLink 
-              to="/scorecard" 
+              to="/scorecards" 
               className="start-scorecard-btn" 
               exact="true"
               type="button" onClick={useNavigate}>Start Scorecard

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import '../../styles/App.css';
 import RegisterForm from "../Auth/RegisterForm";
@@ -10,10 +10,14 @@ import Home from "../Home/Home";
 import NewScorecard from "../Scorecard/NewScorecard";
 import '../../styles/LiveHolesScorecard.css';
 import NearbyCourses from "../NearbyCourses/NearbyCourses";
+import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
+import LiveScorecard from "../Scorecard/LiveScorecard";
 
 function App() {
   const [userDetails, setUserDetails] = useState(null);
 
+  const {hole, scorecards} = useParams();
+  
   useEffect(() => {
     const updateUserDetails = () => {
      if(Cookies.get('Authorization')) {
@@ -80,13 +84,13 @@ function App() {
           element={<RegisterForm setUserDetails={setUserDetails} />}
           />
           {/* <Route path="/home" exact component={Home} /> */}
-          <Route
-          path="scorecards"
-          element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />}
-          />
+          <Route path="scorecards/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} >
+            <Route path=":scorecards/hole/:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
+            <Route path=":scorecards" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
+          </Route>
           {/* <Route
-          path="scorecards"
-          
+            path="hol
+            element=
           /> */}
           <Route
           path="nearbycourses"
