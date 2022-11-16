@@ -7,11 +7,10 @@ class Scorecard(models.Model):
     date =  models.DateTimeField()
     players = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
-
 class Hole(models.Model):
     number = models.IntegerField()
     par = models.IntegerField()
     distance = models.IntegerField()
     score = models.IntegerField()
     player = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    scorecard = models.ForeignKey(Scorecard, on_delete=models.CASCADE)
+    scorecard = models.ForeignKey(Scorecard, on_delete=models.CASCADE, related_name="holes")

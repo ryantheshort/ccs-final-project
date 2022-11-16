@@ -95,7 +95,7 @@ function Navbar(props) {
               <>
             <li className="nav-text" >
               <NavLink 
-              to="/scorecards" 
+              to="/scorecards/add" 
               className="start-scorecard-btn" 
               exact="true"
               type="button" onClick={useNavigate}>Start Scorecard

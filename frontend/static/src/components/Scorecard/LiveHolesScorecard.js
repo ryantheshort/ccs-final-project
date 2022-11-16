@@ -20,7 +20,7 @@ function LiveHolesScorecard(props) {
   const [scorecard, setScorecard] = useState(initialState);
 
   useEffect(() => {
-    fetch("api/v1/scorecards/:scorecards/hole/:hole")
+    fetch("api/v1/scorecards/")
     .then((response) => response.json())
     .then((item) => setScorecard(item));
   }, [scorecard]);
