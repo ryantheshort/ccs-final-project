@@ -5,6 +5,6 @@ app_name = 'scorecards'
 
 urlpatterns = [
     path('', ScorecardsListAPIView.as_view()),
-    path(':scorecard/', LiveScorecardAPIView.as_view()),
-    path(':hole', HoleListAPIView.as_view())
+    path('<int:pk>/', LiveScorecardAPIView.as_view()),
+    path('holes/', HoleListAPIView.as_view())
 ]

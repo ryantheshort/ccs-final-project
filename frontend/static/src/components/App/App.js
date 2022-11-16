@@ -85,14 +85,10 @@ function App() {
             element={<RegisterForm setUserDetails={setUserDetails} />}
             />
             
-            <Route path="scorecards/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} >
-              <Route path=":scorecards/hole/:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
-              <Route path=":scorecards" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
-            </Route>
-            {/* <Route
-              path="hol
-              element=
-            /> */}
+            <Route path="scorecards/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} ></Route>
+            <Route path="scorecards:scorecard/hole/:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
+            <Route path="scorecards:scorecard" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
+            
             <Route
             path="nearbycourses"
             element={<NearbyCourses userDetails={userDetails}/>}

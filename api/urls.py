@@ -4,6 +4,6 @@ app_name = 'api_v1'
 
 urlpatterns = [
     path('', include('accounts.urls',namespace='accounts')),
-    path('scorecards/', include('scorecards.urls', namespace='scorecards')),
-    path('hole/', include('scorecards.urls', namespace='scorecards'))
+    path('scorecards/', include('scorecards.urls', namespace='scorecards'))
+    
 ]
