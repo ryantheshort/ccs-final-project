@@ -70,35 +70,36 @@ function App() {
 // };
 
   return (
-    <BrowserRouter>
-      <div className="App">
+    <div className="App">
+      <BrowserRouter>
+      
         <NavLink userDetails={userDetails} setUserDetails={setUserDetails} />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route
-          path="login"
-          element={<LoginForm setUserDetails={setUserDetails} />}
-          />
-          <Route
-          path="register"
-          element={<RegisterForm setUserDetails={setUserDetails} />}
-          />
-          {/* <Route path="/home" exact component={Home} /> */}
-          <Route path="scorecards/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} >
-            <Route path=":scorecards/hole/:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
-            <Route path=":scorecards" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
-          </Route>
-          {/* <Route
-            path="hol
-            element=
-          /> */}
-          <Route
-          path="nearbycourses"
-          element={<NearbyCourses userDetails={userDetails}/>}
-          />
-        </Routes>
-      </div>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route
+            path="login"
+            element={<LoginForm setUserDetails={setUserDetails} />}
+            />
+            <Route
+            path="register"
+            element={<RegisterForm setUserDetails={setUserDetails} />}
+            />
+            
+            <Route path="scorecards/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} >
+              <Route path=":scorecards/hole/:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
+              <Route path=":scorecards" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
+            </Route>
+            {/* <Route
+              path="hol
+              element=
+            /> */}
+            <Route
+            path="nearbycourses"
+            element={<NearbyCourses userDetails={userDetails}/>}
+            />
+          </Routes>
     </BrowserRouter>
+    </div>
   );
   
   

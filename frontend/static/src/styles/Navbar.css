@@ -6,4 +6,10 @@
 .banner {
     border-color: linear-gradient(#946f3c, #dece8c);
     border-width: 3px;
+    
 }
+
+.offcanvas {
+    background-color: linear-gradient(#0b0b0b, #3d3d3d);
+}
+

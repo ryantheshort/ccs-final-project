@@ -1,12 +1,11 @@
 import Nav from "react-bootstrap/Nav";
-import FeatureCardLogo from "../Images/FeatureCardlogo.png";
+
+import "../../styles/Home.css";
 
 function Home() {
     return (
-        <main>
-            <div className="home-container">
-                <img className="fclogo" src={FeatureCardLogo} alt="home-pic" />
-            </div>
+        <main className="home-page">
+            
             <div className="home-buttons">
                 <Nav.Link className="login-form btn-hover" href="/login">Player Login</Nav.Link>
             </div>

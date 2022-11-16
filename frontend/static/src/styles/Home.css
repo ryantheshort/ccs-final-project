@@ -1,0 +1,41 @@
+@media (max-width: 480px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+
+.home-page {
+    background-image: url("../../src/components/Images/FeatureCardlogo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.fclogo {
+    object-fit: contain;
+    object-position: center;
+}
+
+}
+
+@media (min-width: 481px) {
+
+Main {
+    height: 100vh;
+    text-align: center;
+    background-color: linear-gradient(#946f3c, #dece8c);
+}
+.home-page {
+    background-repeat: no-repeat;
+    background-image: url("../../src/components/Images/FeatureCardlogo.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.home-buttons {
+    background-color: linear-gradient(#946f3c, #dece8c);
+}
+
+.fclogo {
+    object-fit: contain;
+    object-position: center;
+}
+
+}

@@ -12,6 +12,7 @@ import FCbar from "../Images/FCbar.png";
 import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
 import NearbyCourses from "../NearbyCourses/NearbyCourses";
 import "../../styles/Navbar.css";
+import Home from "../Home/Home";
 
 function Navbar(props) {
     const { userDetails, setUserDetails } = props;

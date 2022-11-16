@@ -2,17 +2,22 @@
 
 .App {
   text-align: center;
+  
 }
+
+
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-
+.offcanvas {
+  background-color: linear-gradient(#0b0b0b, #3d3d3d);
+}
 
 .App-header {
-  background-color: #282c34;
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,7 +29,21 @@
 
 .App-link {
   color: #61dafb;
+  background-color: linear-gradient(#946f3c, #dece8c);
 }
+
+
+}
+
+@media (min-width: 481px) {
+.offcanvas {
+  background-color: linear-gradient(#0b0b0b, #3d3d3d);
+}
+
+.App {
+  background-color: linear-gradient(#946f3c, #dece8c);
+}
+
 
 
 }
