@@ -1,15 +1,52 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap');
+
+.username {
+    color: #dece8c;
+}
+
+.btn-group-vertical a, .btn-group-vertical button {
+    width: 100%;
+    color: black;
+    font-family: 'Lato', sans-serif;
+    
+}
+
+
+
+.btn-group-vertical a, .btn-group-vertical button, .btn-primary {
+    background-color: #dece8c;
+    border-color: black;
+    border-radius: 4%; 
+}
+
+.btn-group-vertical a, .btn-group-vertical button:hover, .btn-primary {
+    background-color: black;
+    color: white;
+    border-color: #946f3c;
+}
+
 .fcbar {
     display: flex;
     max-width: 100%;
     position: center;
 }
 .banner {
-    border-color: linear-gradient(#946f3c, #dece8c);
+    color: linear-gradient(#946f3c, #dece8c);
     border-width: 3px;
-    
-}
-
-.offcanvas {
     background-color: linear-gradient(#0b0b0b, #3d3d3d);
 }
 
+.offcanvas-body {
+    background-color: linear-gradient(#0b0b0b, #3d3d3d);
+    text-align: center;
+    
+}
+
+.offcanvas.offcanvas-start {
+    background: linear-gradient(#0b0b0b, #3d3d3d);
+}
+
+.navbar {
+    color: linear-gradient(#946f3c, #dece8c);
+  }

@@ -8,7 +8,7 @@ import NavLink from "../Navbar/Navbar";
 import { handleError } from "../../utils/helpers";
 import Home from "../Home/Home";
 import NewScorecard from "../Scorecard/NewScorecard";
-import '../../styles/LiveHolesScorecard.css';
+
 import NearbyCourses from "../NearbyCourses/NearbyCourses";
 import LiveHolesScorecard from "../Scorecard/LiveHolesScorecard";
 import LiveScorecard from "../Scorecard/LiveScorecard";
@@ -86,8 +86,8 @@ function App() {
             />
             
             <Route path="scorecards/add/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} ></Route>
-            <Route path="scorecards:scorecard/hole:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
-            <Route path="scorecards:scorecard" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
+            <Route path="scorecards/:scorecard/hole/:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
+            <Route path="scorecards/:scorecard" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
             
             <Route
             path="nearbycourses"

@@ -16,38 +16,33 @@ function LiveHolesScorecard(props) {
   const [index, setIndex] = useState(0);
   // const [count, setCount] = useState(0);
 
+
+  // {
+  //   course: 'djfldkfj',
+  //   date: 'dakfjaldkf',
+  //   players: ['1', '2']
+  //   : [{}, {}]
+  // }
   // Values for table
   const [scorecard, setScorecard] = useState(initialState);
+  
+  const [number, setNumber] = useState([]);
+  const [par, setPar] = useState([]);
+  const [distance, setDistance] = useState([]);
+  const [player, setPlayer] = useState([]);
+  const {hole, scorecards} = useParams();
+
 
   useEffect(() => {
-    fetch("api/v1/scorecards/")
+    
+    fetch("/api/v1/scorecards/")
     .then((response) => response.json())
     .then((item) => setScorecard(item));
   }, [scorecard]);
 
   const [score, setScore] = useState(initialState);
-  // const [scorecard, setScorecard] = useState({
-  //   hole1: {
-  //     par: null,
-  //     distance: null,
-  //     score: null,
-  //   },
-  //   hole2: {
-  //     par: null,
-  //     distance: null,
-  //     score: null,
-  //   },
-  //   hole3: {
-  //     par: null,
-  //     distance: null,
-  //     score: null,
-  //   },
-  //   hole4: {
-  //     par: null,
-  //     distance: null,
-  //     score: null,
-  //   },
-  // });
+
+
 
   const handleChange = (e) => {
     const { name, id, value }  = e.target;
@@ -79,54 +74,61 @@ function LiveHolesScorecard(props) {
 
   const { userDetails, setUserDetails } = props;
 
-    const startScorecard = async (e) => {
+// Fetch request to holes endpoint
+    const saveHoleData = async (e) => {
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify
+        body: JSON.stringify({
+          number: 1,
+          par: 3,
+          distance: 300,
+          score: 3,
+          player: 2,
+          scorecard: 4
+        })
       };
       
-      const response = await fetch("/dj-rest-auth/logout/", options).catch(handleError);
+      const response = await fetch("/api/v1/holes", options).catch(handleError);
       if (!response.ok) {
         throw new Error("Network response was not OK");
       } else {
         const data = await response.json();
-        Cookies.remove("Authorization");
-        localStorage.removeItem('username');
-        setUserDetails({
-          isAuth: false,
-          username: null
-        });
-       
+
       }
   
     };
 
-    console.log({scorecard})
+    // console.log({score})
+
 
     const carouselItems = Array.from({length: 18}).map((item, index) => (
       
-      <Carousel.Item>
+      <Carousel.Item key={index}>
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name={`hole${index + 1}`} required min="3" max="5" onChange={handleChange}></input></p>
             <p> <input type="number" id="distance" name="hole-distance" required onChange={handleChange}></input>ft</p>
-            <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {score} <Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
-            
+            <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> 10 <Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
       </Carousel.Item>
     ));
 
+    // console.log({carouselItems})
+
 
     return (
+    <>
     <Carousel activeIndex={index} interval={null} variant="dark" onSelect={handleSelect} >
       {carouselItems}
-      <Carousel.Item><LiveScorecard scorecard={scorecard}/></Carousel.Item>
+      {/*<Carousel.Item><LiveScorecard scorecard={scorecard}/></Carousel.Item>*/}
     </Carousel>
+    <button type="button" onClick={saveHoleData}>Save score</button>
+    </>
   );
 }
 

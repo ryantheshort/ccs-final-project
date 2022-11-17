@@ -22,6 +22,9 @@ Main {
     text-align: center;
     background-color: linear-gradient(#946f3c, #dece8c);
 }
+
+
+
 .home-page {
     background-repeat: no-repeat;
     background-image: url("../../src/components/Images/FeatureCardlogo.png");
@@ -37,5 +40,7 @@ Main {
     object-fit: contain;
     object-position: center;
 }
+
+
 
 }

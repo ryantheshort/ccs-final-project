@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import Cookies from 'js-cookie';
@@ -18,7 +19,7 @@ function Navbar(props) {
     const { userDetails, setUserDetails } = props;
     // const [sidebar, setSidebar] = useState(false);
     const [show, setShow] = useState(false);
-
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -65,69 +66,58 @@ function Navbar(props) {
             </NavLink>
           </div>
         </div>
-        <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas  show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
         <Offcanvas.Title> <img className="fcbar" src={FCbar} alt="logo-pic" />
         </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        <ul className="nav-menu-items">
+        <div className="nav-menu-items">
             <h2 className="username">{userDetails && userDetails.username}</h2>
-          <IconContext.Provider value={{ color: "#333333" }}>
-          <li className="nav-text ">
-            <NavLink 
-              className="login-form btn-hover" 
-              to="/login"
-              exact="true"
-              type="button"
-              onClick={useNavigate}>Player Login</NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/nearbycourses" 
-                className="nearby-courses-btn"
-                exact="true"
-                type="button" onClick={useNavigate}>Nearby Courses
-
-              </NavLink>
-            </li>
-            {userDetails?.isAuth ? (
-              <>
-            <li className="nav-text" >
-              <NavLink 
-              to="/scorecards/add" 
-              className="start-scorecard-btn" 
-              exact="true"
-              type="button" onClick={useNavigate}>Start Scorecard
-              </NavLink>
-            </li>
-            <li className="nav-text" >
-              <NavLink to="/history" className="active" exact="true">
-                <FaIcons.FaHistory />
-                <span>Game History</span>
-              </NavLink>
-            </li>
-            <li className="nav-text">
-              <NavLink
-                to="/"
-                exact="true"
-                className="logout-btn"
-                onClick={() => {
-                  // showSidebar();
-                  props.appLogin("");
-                }}
-              >
-                <IconContext.Provider value={{ color: "#B10000" }}>
-                  <IoIcons.IoPowerOutline />
-                </IconContext.Provider>
-                <button type="button" onClick={handleLogout}>Logout</button>
-              </NavLink>
-            </li>
-              </>
+          <ButtonGroup vertical>
             
+            <NavLink 
+                className="login-canvas" 
+                to="/login"
+                exact="true"
+                onClick={useNavigate}><Button>PLAYER LOGIN</Button>
+            </NavLink>
+                <NavLink 
+                  to="/nearbycourses" 
+                  className="nearby-courses"
+                  exact="true"
+                  onClick={useNavigate}><Button>NEARBY COURSES</Button>
+            </NavLink>
+              {userDetails?.isAuth ? (
+                <>
+            
+                <NavLink 
+                to="/scorecards/add" 
+                className="start-scorecard" 
+                exact="true"
+                type="button" onClick={useNavigate}><Button>START SCORECARD</Button>
+                </NavLink>
+                <NavLink 
+                  to="/history" 
+                  className="active" 
+                  exact="true">
+                  <Button>GAME HISTORY</Button>
+                </NavLink>
+                <NavLink
+                  to="/"
+                  exact="true"
+                  className="logout"
+                  onClick={() => {
+                    // showSidebar();
+                    props.appLogin("");
+                  }}
+                  onClick={handleLogout}
+                ><Button>LOGOUT</Button>
+                </NavLink>
+            </>   
             ) : undefined}
-            </IconContext.Provider>
-        </ul>
+          </ButtonGroup>
+        </div>
           </Offcanvas.Body>
         </Offcanvas>
         </>

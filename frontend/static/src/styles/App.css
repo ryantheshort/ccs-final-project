@@ -5,7 +5,9 @@
   
 }
 
-
+.navbar {
+  color: linear-gradient(#946f3c, #dece8c);
+}
 
 .App-logo {
   height: 40vmin;
@@ -24,12 +26,12 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  
 }
 
 .App-link {
   color: #61dafb;
-  background-color: linear-gradient(#946f3c, #dece8c);
+  
 }
 
 
@@ -40,10 +42,16 @@
   background-color: linear-gradient(#0b0b0b, #3d3d3d);
 }
 
+.banner {
+  color: linear-gradient(#946f3c, #dece8c);
+}
+
 .App {
   background-color: linear-gradient(#946f3c, #dece8c);
 }
 
-
+.navbar {
+  color: linear-gradient(#946f3c, #dece8c);
+}
 
 }
