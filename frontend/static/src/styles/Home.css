@@ -17,7 +17,7 @@
 
 @media (min-width: 481px) {
 
-Main {
+main {
     height: 100vh;
     text-align: center;
     background-color: linear-gradient(#946f3c, #dece8c);

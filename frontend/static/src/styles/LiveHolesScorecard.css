@@ -1,7 +1,32 @@
 @media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
-.Carousel {
-    background-color: linear-gradient(#0c0c0c, #3c3c3c)
+
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+.carousel-inner {
+    text-align: center;
+    
+}
+
+.carousel-indicators {
+    position: relative;
+    bottom: -300px;
+}
+
+#distance {
+    width:4.5%;
+    text-align: center;
+}
+
+.save-button.btn.btn-primary {
+    align-self: center;
+}
+/* .carousel.slide.carousel-dark {
+    align-items: center;
+} */
 
 /* End of Media Query */
 }

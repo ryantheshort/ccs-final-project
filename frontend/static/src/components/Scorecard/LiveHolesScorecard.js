@@ -91,7 +91,7 @@ function LiveHolesScorecard(props) {
         })
       };
       
-      const response = await fetch("/api/v1/holes", options).catch(handleError);
+      const response = await fetch("/api/v1/scorecards/", options).catch(handleError);
       if (!response.ok) {
         throw new Error("Network response was not OK");
       } else {
@@ -106,12 +106,12 @@ function LiveHolesScorecard(props) {
 
     const carouselItems = Array.from({length: 18}).map((item, index) => (
       
-      <Carousel.Item key={index}>
+      <Carousel.Item key={index} >
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name={`hole${index + 1}`} required min="3" max="5" onChange={handleChange}></input></p>
-            <p> <input type="number" id="distance" name="hole-distance" required onChange={handleChange}></input>ft</p>
+            <p> <input type="number" id="distance" name="hole-distance" required onChange={handleChange}></input> ft</p>
             <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> 10 <Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
@@ -127,7 +127,7 @@ function LiveHolesScorecard(props) {
       {carouselItems}
       {/*<Carousel.Item><LiveScorecard scorecard={scorecard}/></Carousel.Item>*/}
     </Carousel>
-    <button type="button" onClick={saveHoleData}>Save score</button>
+    <Button className="save-button" type="button" onClick={saveHoleData}>Save score</Button>
     </>
   );
 }

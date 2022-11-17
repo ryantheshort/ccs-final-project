@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  
+  min-height: 100vh;
 }
 
 .navbar {
@@ -20,7 +20,7 @@
 
 .App-header {
   
-  min-height: 100vh;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,11 +43,12 @@
 }
 
 .banner {
-  color: linear-gradient(#946f3c, #dece8c);
+  background-color: linear-gradient(#946f3c, #dece8c);
 }
 
 .App {
   background-color: linear-gradient(#946f3c, #dece8c);
+  min-height: 100vh;
 }
 
 .navbar {
