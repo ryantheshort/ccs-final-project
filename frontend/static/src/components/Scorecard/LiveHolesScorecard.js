@@ -25,36 +25,54 @@ function LiveHolesScorecard(props) {
   // }
   // Values for table
   const [scorecard, setScorecard] = useState(initialState);
+  const {holeID, scorecardID} = useParams();
+  const [hole, setHole] = useState({
+    number: holeID,
+    par: '',
+    distance: '',
+    score: 0,
+    player: undefined,
+    scorecard: scorecard.id
+  })
   
-  const [number, setNumber] = useState([]);
-  const [par, setPar] = useState([]);
-  const [distance, setDistance] = useState([]);
-  const [player, setPlayer] = useState([]);
-  const {hole, scorecards} = useParams();
-
+  // const [number, setNumber] = useState([]);
+  // const [par, setPar] = useState([]);
+  // const [distance, setDistance] = useState([]);
+  // const [player, setPlayer] = useState([]);
+  
+  
+  console.log({scorecard})
 
   useEffect(() => {
     
-    fetch("/api/v1/scorecards/")
+    fetch(`/api/v1/scorecards/${scorecardID}/`)
     .then((response) => response.json())
     .then((item) => setScorecard(item));
-  }, [scorecard]);
+  }, []);
 
-  const [score, setScore] = useState(initialState);
+  const [score, setScore] = useState(0);
 
 
 
   const handleChange = (e) => {
-    const { name, id, value }  = e.target;
-    setScorecard(scorecard.map(card => {
-      if (card.name === name){
-        return {
-          ...card,
-          [id]: value,
-        }
-      } else return card;
+    const { name, value }  = e.target;
+    // setScorecard(scorecard.map(card => {
+    //   if (card.name === name){
+    //     return {
+    //       ...card,
+    //       [id]: value,
+    //     }
+    //   } else return card;
+    // }))
+
+    setHole((prevState) => ({
+      ...prevState,
+      name: value,
     }))
   };
+
+
+  
 
 // Plus and Minus Buttons
   const IncrementCount = () => {
@@ -80,18 +98,12 @@ function LiveHolesScorecard(props) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-CSRFToken": Cookies.get("csrftoken"),
         },
-        body: JSON.stringify({
-          number: 1,
-          par: 3,
-          distance: 300,
-          score: 3,
-          player: 2,
-          scorecard: 4
-        })
+        body: JSON.stringify(hole)
       };
       
-      const response = await fetch("/api/v1/scorecards/", options).catch(handleError);
+      const response = await fetch(`/api/v1/scorecards/${scorecardID}/hole/${holeID}/`, options).catch(handleError);
       if (!response.ok) {
         throw new Error("Network response was not OK");
       } else {
@@ -110,9 +122,9 @@ function LiveHolesScorecard(props) {
         <Form>
           <Form.Group className="md-4" controlId={index}>
             <h2>Hole {index + 1}</h2>
-            <p>Par <input type="number" id="par" name={`hole${index + 1}`} required min="3" max="5" onChange={handleChange}></input></p>
-            <p> <input type="number" id="distance" name="hole-distance" required onChange={handleChange}></input> ft</p>
-            <h2 className="username">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> 10 <Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
+            <p>Par <input type="number" id="par" name="par" required min="3" max="5" onChange={handleChange}></input></p>
+            <p> <input type="number" id="distance" name="distance" required onChange={handleChange}></input> ft</p>
+            <h2 className="username" id="player" name="player">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {score} <Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
           </Form.Group>
         </Form>
       </Carousel.Item>

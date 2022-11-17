@@ -16,7 +16,7 @@ import LiveScorecard from "../Scorecard/LiveScorecard";
 function App() {
   const [userDetails, setUserDetails] = useState(null);
 
-  const {hole, scorecards} = useParams();
+  const {hole, scorecard} = useParams();
   
   useEffect(() => {
     const updateUserDetails = () => {
@@ -86,7 +86,7 @@ function App() {
             />
             
             <Route path="scorecards/add/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} ></Route>
-            <Route path="scorecards/:scorecard/hole/:hole" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
+            <Route path="scorecards/:scorecardID/hole/:holeID" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
             <Route path="scorecards/:scorecard" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
             
             <Route
