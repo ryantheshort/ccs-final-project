@@ -9,20 +9,13 @@ import LiveScorecard from './LiveScorecard';
 import { useParams } from 'react-router-dom';
 
 const initialState = Array.from({length: 18}).map((item,index) => (
-  {name: `hole${index + 1}`, par: "", distance: "", score: ""}
+  {name: `hole${index + 1}`, par: "", distance: "", score: "", }
 ));
 
 function LiveHolesScorecard(props) {
   const [index, setIndex] = useState(0);
   // const [count, setCount] = useState(0);
 
-
-  // {
-  //   course: 'djfldkfj',
-  //   date: 'dakfjaldkf',
-  //   players: ['1', '2']
-  //   : [{}, {}]
-  // }
   // Values for table
   const [scorecard, setScorecard] = useState(initialState);
   const {holeID, scorecardID} = useParams();
@@ -31,17 +24,16 @@ function LiveHolesScorecard(props) {
     par: '',
     distance: '',
     score: 0,
-    player: undefined,
-    scorecard: scorecard.id
+    player: 1,
+    scorecard: scorecardID
   })
   
   // const [number, setNumber] = useState([]);
   // const [par, setPar] = useState([]);
   // const [distance, setDistance] = useState([]);
-  // const [player, setPlayer] = useState([]);
+  const [player, setPlayer] = useState([]);
+
   
-  
-  console.log({scorecard})
 
   useEffect(() => {
     
@@ -55,7 +47,7 @@ function LiveHolesScorecard(props) {
 
 
   const handleChange = (e) => {
-    const { name, value }  = e.target;
+    let { name, value, type }  = e.target;
     // setScorecard(scorecard.map(card => {
     //   if (card.name === name){
     //     return {
@@ -65,9 +57,13 @@ function LiveHolesScorecard(props) {
     //   } else return card;
     // }))
 
+    if(type === "number") {
+      value = parseInt(value);
+    }
+
     setHole((prevState) => ({
       ...prevState,
-      name: value,
+      [name]: value,
     }))
   };
 
@@ -76,21 +72,26 @@ function LiveHolesScorecard(props) {
 
 // Plus and Minus Buttons
   const IncrementCount = () => {
-    setScore(score => score + 1);
+    // setScore(score => score + 1);
+    setHole((prevState) => ({
+      ...prevState,
+      score: prevState.score + 1,
+    }))
   };
 
   const DecrementCount = () => {
-    if (score > 0) {
-    setScore(score => score - 1);
+    if (hole.score > 0) {
+    // setScore(score => score - 1);
+    setHole((prevState) => ({
+      ...prevState,
+      score: prevState.score - 1,
+    }))
   }
   };
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
-
-
-  const { userDetails, setUserDetails } = props;
 
 // Fetch request to holes endpoint
     const saveHoleData = async (e) => {
@@ -103,7 +104,7 @@ function LiveHolesScorecard(props) {
         body: JSON.stringify(hole)
       };
       
-      const response = await fetch(`/api/v1/scorecards/${scorecardID}/hole/${holeID}/`, options).catch(handleError);
+      const response = await fetch(`/api/v1/scorecards/holes/`, options).catch(handleError);
       if (!response.ok) {
         throw new Error("Network response was not OK");
       } else {
@@ -113,18 +114,54 @@ function LiveHolesScorecard(props) {
   
     };
 
-    // console.log({score})
+    // Post request to implement current players
 
+    // const setPlayers = async (e) => {
+    //   e.preventDefault();
+    //   const options = {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "X-CSRFToken": Cookies.get("csrftoken"),
+    //     },
+    //     body: JSON.stringify({
+    //       players
+    //     }),
+    //   };
+    //   const response = await fetch("/api/v1/scorecards/", options).catch(
+    //     handleError
+    //   );
+    //   if (!response.ok) {
+    //     throw new Error("Network response was not OK");
+    //   } else {
+    //     const data = await response.json();
+    //       navigate("")
+    //   }
+    // };
+    // const cardPlayers = scorecardID?.map(user) => {
+    //   return (
+    //     <h2 key={user.id} value={user.id}>
+    //       {user.username}
+    //     </h2>
+    //   )
+    // };
+
+    const playersHTML = scorecard.players_details?.map(player => (
+      <div>{player.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {hole.score} <Button className="control__btn" onClick={IncrementCount}>+</Button></div>
+    ));
+
+    console.log(playersHTML);
 
     const carouselItems = Array.from({length: 18}).map((item, index) => (
       
       <Carousel.Item key={index} >
         <Form>
           <Form.Group className="md-4" controlId={index}>
-            <h2>Hole {index + 1}</h2>
+            <h2 id="number" name="number">Hole {index + 1}</h2>
             <p>Par <input type="number" id="par" name="par" required min="3" max="5" onChange={handleChange}></input></p>
             <p> <input type="number" id="distance" name="distance" required onChange={handleChange}></input> ft</p>
-            <h2 className="username" id="player" name="player">{userDetails && userDetails.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {score} <Button className="control__btn" onClick={IncrementCount}>+</Button></h2>
+            {playersHTML}
+            {/* <h2 className="username" id="player" name="player"> <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {hole.score} <Button className="control__btn" onClick={IncrementCount}>+</Button></h2> */}
           </Form.Group>
         </Form>
       </Carousel.Item>
@@ -139,6 +176,7 @@ function LiveHolesScorecard(props) {
       {carouselItems}
       {/*<Carousel.Item><LiveScorecard scorecard={scorecard}/></Carousel.Item>*/}
     </Carousel>
+    
     <Button className="save-button" type="button" onClick={saveHoleData}>Save score</Button>
     </>
   );

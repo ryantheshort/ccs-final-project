@@ -18,7 +18,7 @@ function RegisterForm({ setUserDetails }) {
             return;
         } else {
             handleSubmit(e);        }
-        }
+        };
     
 
     const [userType, setUserType] = useState();
@@ -32,7 +32,7 @@ function RegisterForm({ setUserDetails }) {
       [name]: value,
     }));
     };
-
+// alert("Please enter matching passwords.");
     const handleSubmit = async (e) => {
         e.preventDefault();
         const options = {
@@ -52,11 +52,10 @@ function RegisterForm({ setUserDetails }) {
           //
           setUserDetails({
             isAuth: true,
-            username: data.username 
+            username: data.username,
+            user_profile: data.profile
            });
-          if (checkSamePass === true) {
-            navigate("/login");
-          }
+           navigate("/");
         }
       };
     return (

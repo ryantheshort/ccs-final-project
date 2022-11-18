@@ -7,5 +7,5 @@ urlpatterns = [
     path('', ScorecardsListAPIView.as_view()),
     path('<int:pk>/', LiveScorecardAPIView.as_view()),
     path('holes/', HoleListAPIView.as_view()),
-    path('holes/<int:pk>', HoleDetailsAPIView.as_view())
+    path('holes/<int:pk>/', HoleDetailsAPIView.as_view())
 ]

@@ -6,6 +6,8 @@ class Scorecard(models.Model):
     course = models.CharField(max_length=55)
     date =  models.DateTimeField()
     players = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    hole = models.IntegerField()
+
 
 class Hole(models.Model):
     number = models.IntegerField()
