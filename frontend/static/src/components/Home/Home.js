@@ -6,6 +6,7 @@ function Home() {
     return (
         <main className="home-page">
             
+            
             <div className="home-buttons">
                 <Nav.Link className="login-form btn-hover" href="/login">Player Login</Nav.Link>
             </div>

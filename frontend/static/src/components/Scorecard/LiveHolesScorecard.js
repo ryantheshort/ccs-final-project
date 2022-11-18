@@ -8,14 +8,65 @@ import Button from 'react-bootstrap/Button';
 import LiveScorecard from './LiveScorecard';
 import { useParams } from 'react-router-dom';
 
+
 const initialState = Array.from({length: 18}).map((item,index) => (
   {name: `hole${index + 1}`, par: "", distance: "", score: "", }
 ));
 
+function Player({player}) {
+  
+  const [index, setIndex] = useState(0);
+  const {holeID, scorecardID} = useParams();
+  const [hole, setHole] = useState({
+    number: holeID,
+    par: '',
+    distance: '',
+    score: 0,
+    player: 1,
+    scorecard: scorecardID
+  })
+
+  const IncrementCount = () => {
+    // setScore(score => score + 1);
+    setHole((prevState) => ({
+      ...prevState,
+      score: prevState.score + 1,
+    }))
+  };
+
+  const DecrementCount = () => {
+    if (hole.score > 0) {
+    // setScore(score => score - 1);
+    setHole((prevState) => ({
+      ...prevState,
+      score: prevState.score - 1,
+    }))
+  }
+  };
+  const handleChange = (e) => {
+    let { name, value, type }  = e.target;
+
+
+    if(type === "number") {
+      value = parseInt(value);
+    }
+
+    setHole((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+  };
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+  return(<div className="player-text">{player.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {hole.score} <Button className="control__btn" onClick={IncrementCount}>+</Button></div>)
+}
+
 function LiveHolesScorecard(props) {
   const [index, setIndex] = useState(0);
   // const [count, setCount] = useState(0);
-
+  
   // Values for table
   const [scorecard, setScorecard] = useState(initialState);
   const {holeID, scorecardID} = useParams();
@@ -37,7 +88,10 @@ function LiveHolesScorecard(props) {
   useEffect(() => {
     fetch(`/api/v1/scorecards/${scorecardID}/`)
       .then((response) => response.json())
-      .then((item) => setHole(item));
+      .then((item) => {
+        const holes  = item.holes;
+        // setHoles(holes);
+      });
   }, []);
 
 
@@ -56,14 +110,7 @@ function LiveHolesScorecard(props) {
 
   const handleChange = (e) => {
     let { name, value, type }  = e.target;
-    // setScorecard(scorecard.map(card => {
-    //   if (card.name === name){
-    //     return {
-    //       ...card,
-    //       [id]: value,
-    //     }
-    //   } else return card;
-    // }))
+
 
     if(type === "number") {
       value = parseInt(value);
@@ -101,6 +148,8 @@ function LiveHolesScorecard(props) {
     setIndex(selectedIndex);
   };
 
+  
+
 // Fetch request to holes endpoint
     const saveHoleData = async (e) => {
       const options = {
@@ -117,7 +166,7 @@ function LiveHolesScorecard(props) {
         throw new Error("Network response was not OK");
       } else {
         const data = await response.json();
-
+        
       }
   
     };
@@ -155,10 +204,11 @@ function LiveHolesScorecard(props) {
     // };
 
     const playersHTML = scorecard.players_details?.map(player => (
-      <div className="player-text">{player.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {hole.score} <Button className="control__btn" onClick={IncrementCount}>+</Button></div>
+      <Player key={player.id} player={player} />
     ));
 
     console.log(playersHTML);
+    
 
     const carouselItems = Array.from({length: 18}).map((item, index) => (
       
