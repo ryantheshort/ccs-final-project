@@ -1,12 +1,29 @@
 Feature Card
 
+Admin
+    -Admin can remove, edit, add profile info to all users. More features to come!
+
+Account
+    -User will be able to create an account with a custom username.
+
 Start Scorecard
-    -Opens up a new blank scorecard with the ability to change the hole distance,
-    par, who is playing, and course layout per player.
+    -User can create a fully customizable scorecard. User can set the par, distance, and
+    personal score per hole for them and up to three additional users.
+
+Entire Live Scorecard
+    -Even during their round, the user can view all of their holes at once, or view
+    each hole by itself by simply adjusting their current page on the carousel menu.
 
 Nearby Courses
-    -Using Google Maps API, shows nearby courses within a certain raidius in miles.
+    -Using Google Maps API, shows nearby courses within a certain local distance.
 
 History
-    -Shows all previous scorecards played.
+    -User will be able to see all previous scorecards played.
     
+
+Full Stack Development by:
+
+    Ryan Short,
+
+
+        Carolina Code School
