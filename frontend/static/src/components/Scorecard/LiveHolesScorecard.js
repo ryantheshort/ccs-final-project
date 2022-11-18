@@ -33,8 +33,16 @@ function LiveHolesScorecard(props) {
   // const [distance, setDistance] = useState([]);
   const [player, setPlayer] = useState([]);
 
-  
+  //Fetch request for HoleID
+  useEffect(() => {
+    fetch(`/api/v1/scorecards/${scorecardID}/`)
+      .then((response) => response.json())
+      .then((item) => setHole(item));
+  }, []);
 
+
+  
+// Fetch Request for scorecardID
   useEffect(() => {
     
     fetch(`/api/v1/scorecards/${scorecardID}/`)
@@ -147,7 +155,7 @@ function LiveHolesScorecard(props) {
     // };
 
     const playersHTML = scorecard.players_details?.map(player => (
-      <div>{player.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {hole.score} <Button className="control__btn" onClick={IncrementCount}>+</Button></div>
+      <div className="player-text">{player.username} <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {hole.score} <Button className="control__btn" onClick={IncrementCount}>+</Button></div>
     ));
 
     console.log(playersHTML);
@@ -161,6 +169,7 @@ function LiveHolesScorecard(props) {
             <p>Par <input type="number" id="par" name="par" required min="3" max="5" onChange={handleChange}></input></p>
             <p> <input type="number" id="distance" name="distance" required onChange={handleChange}></input> ft</p>
             {playersHTML}
+            <Button className="save-button" type="button" onClick={saveHoleData}>Save score</Button>
             {/* <h2 className="username" id="player" name="player"> <Button className="control__btn" onClick={DecrementCount}>-</Button><span className="counter__output" type="number" id="score" onChange={handleChange}></span> {hole.score} <Button className="control__btn" onClick={IncrementCount}>+</Button></h2> */}
           </Form.Group>
         </Form>
@@ -172,12 +181,13 @@ function LiveHolesScorecard(props) {
 
     return (
     <>
-    <Carousel activeIndex={index} interval={null} variant="dark" onSelect={handleSelect} >
+    <Carousel activeIndex={index} interval={null}  onSelect={handleSelect} >
       {carouselItems}
+      
       {/*<Carousel.Item><LiveScorecard scorecard={scorecard}/></Carousel.Item>*/}
     </Carousel>
     
-    <Button className="save-button" type="button" onClick={saveHoleData}>Save score</Button>
+    
     </>
   );
 }

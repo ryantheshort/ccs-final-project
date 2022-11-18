@@ -16,7 +16,7 @@ import LiveScorecard from "../Scorecard/LiveScorecard";
 function App() {
   const [userDetails, setUserDetails] = useState(null);
 
-  const {hole, scorecard} = useParams();
+  const {holeID, scorecardID} = useParams();
   
   useEffect(() => {
     const updateUserDetails = () => {

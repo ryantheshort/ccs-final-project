@@ -67,7 +67,7 @@ function Navbar(props) {
           </div>
         </div>
         <Offcanvas  show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
+        <Offcanvas.Header closeButton >
         <Offcanvas.Title> <img className="fcbar" src={FCbar} alt="logo-pic" />
         </Offcanvas.Title>
         </Offcanvas.Header>

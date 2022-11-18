@@ -18,6 +18,9 @@
     width: 5%;
 }
 
+/* .offcanvas-header {
+    : #dece8c;
+} */
 
 .btn-group-vertical a, .btn-group-vertical button, .btn-primary {
     background-image: linear-gradient(#946f3c, #dece8c);
