@@ -110,9 +110,10 @@ function Navbar(props) {
                   onClick={() => {
                     // showSidebar();
                     props.appLogin("");
+                    
                   }}
-                  onClick={handleLogout}
-                ><Button>LOGOUT</Button>
+                  
+                ><Button onClick={handleLogout}>LOGOUT</Button>
                 </NavLink>
             </>   
             ) : undefined}

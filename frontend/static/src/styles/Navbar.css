@@ -12,10 +12,15 @@
     
 }
 
+.menu-bars.active {
+    color: black;
+    font-size: x-large;
+    width: 5%;
+}
 
 
 .btn-group-vertical a, .btn-group-vertical button, .btn-primary {
-    background-color: #dece8c;
+    background-image: linear-gradient(#946f3c, #dece8c);
     border-color: black;
     border-radius: 4%; 
 }
@@ -32,9 +37,8 @@
     position: center;
 }
 .banner {
-    color: linear-gradient(#946f3c, #dece8c);
-    border-width: 3px;
-    background-color: linear-gradient(#0b0b0b, #3d3d3d);
+    background-image: linear-gradient(#946f3c, #dece8c);
+
 }
 
 .offcanvas-body {
@@ -48,5 +52,8 @@
 }
 
 .navbar {
-    color: linear-gradient(#946f3c, #dece8c);
+    background-image: url("../components/Images/FCbar.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
