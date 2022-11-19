@@ -2,19 +2,19 @@ import Table from 'react-bootstrap/Table';
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
-import '../../styles/LiveHolesScorecard.css';
 
-function LiveScorecard(props) {
+import { useParams } from 'react-router-dom';
+function Livescorecard(props) {
 
   const course = useState("");
   const players = useState([]);
   const date = useState("");
-
+  const {hole} = useParams();
 
   const [scoreData, setScoreData] = useState();
   const { userDetails, setUserDetails, scorecard } = props;
   console.log(scorecard)
-
+  console.log(props)
 
 // useEffect(() => {
 //   fetch("/api/v1/scorecards/holes/")
@@ -61,66 +61,66 @@ function LiveScorecard(props) {
         <tbody>
           <tr>
             <th scope="row">PAR</th>
-            <td>{scorecard.hole1.par}</td>
-            <td>{scorecard.hole2.par}</td>
-            <td>{scorecard.hole3.par}</td>
-            <td>{scorecard.hole4.par}</td>
-            <td>{scorecard.hole5.par}</td>
-            <td>{scorecard.hole6.par}</td>
-            <td>{scorecard.hole7.par}</td>
-            <td>{scorecard.hole8.par}</td>
-            <td>{scorecard.hole9.par}</td>
-            <td>{scorecard.hole10.par}</td>
-            <td>{scorecard.hole11.par}</td>
-            <td>{scorecard.hole12.par}</td>
-            <td>{scorecard.hole13.par}</td>
-            <td>{scorecard.hole14.par}</td>
-            <td>{scorecard.hole15.par}</td>
-            <td>{scorecard.hole16.par}</td>
-            <td>{scorecard.hole17.par}</td>
-            <td>{scorecard.hole18.par}</td>
+            <td>{scorecard?.hole1?.par}</td>
+            <td>{scorecard?.hole2?.par}</td>
+            <td>{scorecard?.hole3?.par}</td>
+            <td>{scorecard?.hole4?.par}</td>
+            <td>{scorecard?.hole5?.par}</td>
+            <td>{scorecard?.hole6?.par}</td>
+            <td>{scorecard?.hole7?.par}</td>
+            <td>{scorecard?.hole8?.par}</td>
+            <td>{scorecard?.hole9?.par}</td>
+            <td>{scorecard?.hole10?.par}</td>
+            <td>{scorecard?.hole11?.par}</td>
+            <td>{scorecard?.hole12?.par}</td>
+            <td>{scorecard?.hole13?.par}</td>
+            <td>{scorecard?.hole14?.par}</td>
+            <td>{scorecard?.hole15?.par}</td>
+            <td>{scorecard?.hole16?.par}</td>
+            <td>{scorecard?.hole17?.par}</td>
+            <td>{scorecard?.hole18?.par}</td>
           </tr>
           <tr>
           <th scope="row">DISTANCE</th>
-            <td>{scorecard.hole1.distance}</td>
-            <td>{scorecard.hole2.distance}</td>
-            <td>{scorecard.hole3.distance}</td>
-            <td>{scorecard.hole4.distance}</td>
-            <td>{scorecard.hole5.distance}</td>
-            <td>{scorecard.hole6.distance}</td>
-            <td>{scorecard.hole7.distance}</td>
-            <td>{scorecard.hole8.distance}</td>
-            <td>{scorecard.hole9.distance}</td>
-            <td>{scorecard.hole10.distance}</td>
-            <td>{scorecard.hole11.distance}</td>
-            <td>{scorecard.hole12.distance}</td>
-            <td>{scorecard.hole13.distance}</td>
-            <td>{scorecard.hole14.distance}</td>
-            <td>{scorecard.hole15.distance}</td>
-            <td>{scorecard.hole16.distance}</td>
-            <td>{scorecard.hole17.distance}</td>
-            <td>{scorecard.hole18.distance}</td>
+            <td>{scorecard?.hole1?.distance}</td>
+            <td>{scorecard?.hole2?.distance}</td>
+            <td>{scorecard?.hole3?.distance}</td>
+            <td>{scorecard?.hole4?.distance}</td>
+            <td>{scorecard?.hole5?.distance}</td>
+            <td>{scorecard?.hole6?.distance}</td>
+            <td>{scorecard?.hole7?.distance}</td>
+            <td>{scorecard?.hole8?.distance}</td>
+            <td>{scorecard?.hole9?.distance}</td>
+            <td>{scorecard?.hole10?.distance}</td>
+            <td>{scorecard?.hole11?.distance}</td>
+            <td>{scorecard?.hole12?.distance}</td>
+            <td>{scorecard?.hole13?.distance}</td>
+            <td>{scorecard?.hole14?.distance}</td>
+            <td>{scorecard?.hole15?.distance}</td>
+            <td>{scorecard?.hole16?.distance}</td>
+            <td>{scorecard?.hole17?.distance}</td>
+            <td>{scorecard?.hole18?.distance}</td>
           </tr>
           <tr>
           <th scope="row">{userDetails && userDetails.username}</th>
-            <td>{scorecard.hole1.score}</td>
-            <td>{scorecard.hole2.score}</td>
-            <td>{scorecard.hole3.score}</td>
-            <td>{scorecard.hole4.score}</td>
-            <td>{scorecard.hole5.score}</td>
-            <td>{scorecard.hole6.score}</td>
-            <td>{scorecard.hole7.score}</td>
-            <td>{scorecard.hole8.score}</td>
-            <td>{scorecard.hole9.score}</td>
-            <td>{scorecard.hole10.score}</td>
-            <td>{scorecard.hole11.score}</td>
-            <td>{scorecard.hole12.score}</td>
-            <td>{scorecard.hole13.score}</td>
-            <td>{scorecard.hole14.score}</td>
-            <td>{scorecard.hole15.score}</td>
-            <td>{scorecard.hole16.score}</td>
-            <td>{scorecard.hole17.score}</td>
-            <td>{scorecard.hole18.score}</td>
+            <td>{scorecard?.hole1?.score}</td>
+            <td>{scorecard?.hole2?.score}</td>
+            <td>{scorecard?.hole3?.score}</td>
+            <td>{scorecard?.hole4?.score}</td>
+            <td>{scorecard?.hole5?.score}</td>
+            <td>{scorecard?.hole6?.score}</td>
+            <td>{scorecard?.hole7?.score}</td>
+            <td>{scorecard?.hole8?.score}</td>
+            <td>{scorecard?.hole9?.score}</td>
+            <td>{scorecard?.hole10?.score}</td>
+            <td>{scorecard?.hole11?.score}</td>
+            <td>{scorecard?.hole12?.score}</td>
+            <td>{scorecard?.hole13?.score}</td>
+            <td>{scorecard?.hole14?.score}</td>
+            <td>{scorecard?.hole15?.score}</td>
+            <td>{scorecard?.hole16?.score}</td>
+            <td>{scorecard?.hole17?.score}</td>
+            <td>{scorecard?.hole18?.score}</td>
           </tr>
         </tbody>
       </Table>
@@ -171,4 +171,4 @@ function LiveScorecard(props) {
   // );
 // }
 
-export default LiveScorecard;
+export default Livescorecard;

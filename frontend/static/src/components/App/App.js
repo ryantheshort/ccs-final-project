@@ -75,24 +75,34 @@ function App() {
       
         <NavLink userDetails={userDetails} setUserDetails={setUserDetails} />
           <Routes>
-            <Route index element={<Home />} />
-            <Route
-            path="login"
-            element={<LoginForm setUserDetails={setUserDetails} />}
-            />
-            <Route
-            path="register"
-            element={<RegisterForm setUserDetails={setUserDetails} />}
-            />
             
-            <Route path="scorecards/add/" element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} ></Route>
-            <Route path="scorecards/:scorecardID/hole/:holeID" element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} />
-            <Route path="scorecards/:scorecard" element={<LiveScorecard userDetails={userDetails} setUserDetails={setUserDetails}/>} />
+              <Route index element={<Home />} />
+              <Route
+              path="login"
+              element={<LoginForm setUserDetails={setUserDetails} />}
+              />
+              <Route
+              path="register"
+              element={<RegisterForm setUserDetails={setUserDetails} />}
+              />
+              <Route 
+              path="scorecards" 
+              element={<NewScorecard userDetails={userDetails} setUserDetails={setUserDetails} />}
+              />
+              <Route 
+              path="scorecards/:scorecardID" 
+              element={<LiveScorecard userDetails={userDetails} 
+              setUserDetails={setUserDetails}/>} 
+              />
+              <Route 
+              path="scorecards/hole/:holeID" 
+              element={<LiveHolesScorecard userDetails={userDetails} setUserDetails={setUserDetails} />} 
+              />
+              <Route
+              path="nearbycourses"
+              element={<NearbyCourses userDetails={userDetails}/>}
+              />
             
-            <Route
-            path="nearbycourses"
-            element={<NearbyCourses userDetails={userDetails}/>}
-            />
           </Routes>
     </BrowserRouter>
     </div>

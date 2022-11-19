@@ -85,24 +85,24 @@ function LiveHolesScorecard(props) {
   const [player, setPlayer] = useState([]);
 
   //Fetch request for HoleID
-  useEffect(() => {
-    fetch(`/api/v1/scorecards/${scorecardID}/`)
-      .then((response) => response.json())
-      .then((item) => {
-        const holes  = item.holes;
-        // setHoles(holes);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`/api/v1/scorecards/${scorecardID}/`)
+  //     .then((response) => response.json())
+  //     .then((item) => {
+  //       const holes  = item.holes;
+  //       // setHoles(holes);
+  //     });
+  // }, []);
 
 
   
 // Fetch Request for scorecardID
-  useEffect(() => {
+  // useEffect(() => {
     
-    fetch(`/api/v1/scorecards/${scorecardID}/`)
-    .then((response) => response.json())
-    .then((item) => setScorecard(item));
-  }, []);
+  //   fetch(`/api/v1/scorecards/${scorecardID}/`)
+  //   .then((response) => response.json())
+  //   .then((item) => setScorecard(item));
+  // }, []);
 
   const [score, setScore] = useState(0);
 
@@ -234,7 +234,7 @@ function LiveHolesScorecard(props) {
     <Carousel activeIndex={index} interval={null}  onSelect={handleSelect} >
       {carouselItems}
       
-      {/*<Carousel.Item><LiveScorecard scorecard={scorecard}/></Carousel.Item>*/}
+      <Carousel.Item><LiveScorecard scorecard={scorecard}/></Carousel.Item>
     </Carousel>
     
     

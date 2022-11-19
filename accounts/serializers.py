@@ -11,6 +11,7 @@ class PlayerProfileSerializer(serializers.ModelSerializer):
 class TokenSerializer(serializers.ModelSerializer):
     # id = serializers.ReadOnlyField(source='user.id')
     username = serializers.ReadOnlyField(source='user.username')
+    
     # is_superuser = serializers.ReadOnlyField(source='user.is_superuser')
    
 

@@ -92,7 +92,7 @@ function Navbar(props) {
                 <>
             
                 <NavLink 
-                to="/scorecards/add" 
+                to="/scorecards/" 
                 className="start-scorecard" 
                 exact="true"
                 type="button" onClick={useNavigate}><Button>START SCORECARD</Button>

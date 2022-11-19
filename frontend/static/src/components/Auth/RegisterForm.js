@@ -8,6 +8,8 @@ import { handleError } from "../../utils/helpers";
 function RegisterForm({ setUserDetails }) {
     const [state, setState] = useState({
         username: "",
+        first_name: "",
+        last_name: "",
         password1: "",
         password2: "",
     });
@@ -69,6 +71,26 @@ function RegisterForm({ setUserDetails }) {
                         placeholder="Enter Username"
                         name="username" 
                         value={state.username}
+                        onChange={handleInput}
+                        />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="first_name">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control 
+                        type="text"
+                        placeholder="First Name"
+                        name="first_name" 
+                        value={state.first_name}
+                        onChange={handleInput}
+                        />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="last_name">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control 
+                        type="text"
+                        placeholder="Last Name"
+                        name="last_name" 
+                        value={state.last_name}
                         onChange={handleInput}
                         />
                 </Form.Group>
