@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import '../../styles/NearbyCourses.css';
-import MapForCourses from "./MapForCourses";
+import Map from "./Map";
 function NearbyCourses() {
 
     return (
@@ -9,7 +9,7 @@ function NearbyCourses() {
             <div id="mapClipPath">
         
         
-                <MapForCourses />
+                <Map />
             </div>
         </div>
     )
