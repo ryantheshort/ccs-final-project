@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { handleError } from "../../utils/helpers";
+import { FaSadCry } from "react-icons/fa";
 
 function RegisterForm({ setUserDetails }) {
     const [state, setState] = useState({
@@ -50,8 +51,22 @@ function RegisterForm({ setUserDetails }) {
           throw new Error("Network response was not OK");
         } else {
           const data = await response.json();
+          const profileOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken"),
+              },
+              body: JSON.stringify({first_name: state.first_name, last_name: state.last_name, user: data.user, is_verified: true})
+          }
+          const profileResponse = await fetch("/api/v1/profiles/players/", profileOptions).catch(handleError);
+          if (!profileResponse.ok) {
+            throw new Error("Network response was not OK");
+          } else {
+            const data= await profileResponse.json();
+            }
+          
           Cookies.set("Authorization", `Token ${data.key}`);
-          //
           setUserDetails({
             isAuth: true,
             isVerified: true,

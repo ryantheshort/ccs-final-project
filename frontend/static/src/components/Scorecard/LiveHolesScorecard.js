@@ -79,6 +79,20 @@ function LiveHolesScorecard(props) {
     scorecard: scorecardID
   })
 
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/v1/scorecards/holes');
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      } else {
+        const data = await response.json();
+        // console.log({data})
+      }
+    }
+    fetchData()
+
+  },[])
   
   
   // const [number, setNumber] = useState([]);
@@ -148,42 +162,12 @@ function LiveHolesScorecard(props) {
   
     };
 
-    // Post request to implement current players
-
-    // const setPlayers = async (e) => {
-    //   e.preventDefault();
-    //   const options = {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "X-CSRFToken": Cookies.get("csrftoken"),
-    //     },
-    //     body: JSON.stringify({
-    //       players
-    //     }),
-    //   };
-    //   const response = await fetch("/api/v1/scorecards/", options).catch(
-    //     handleError
-    //   );
-    //   if (!response.ok) {
-    //     throw new Error("Network response was not OK");
-    //   } else {
-    //     const data = await response.json();
-    //       navigate("")
-    //   }
-    // };
-    // const cardPlayers = scorecardID?.map(user) => {
-    //   return (
-    //     <h2 key={user.id} value={user.id}>
-    //       {user.username}
-    //     </h2>
-    //   )
-    // };
+  
 
     const playersHTML = scorecard.players_details?.map(player => (
       <Player key={player.id} player={player} />
     ));
-
+    console.log(scorecard);
    
     
 
