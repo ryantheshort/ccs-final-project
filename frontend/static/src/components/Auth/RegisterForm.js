@@ -54,8 +54,11 @@ function RegisterForm({ setUserDetails }) {
           //
           setUserDetails({
             isAuth: true,
+            isVerified: true,
             username: data.username,
-            user_profile: data.profile
+            user_profile: data.profile,
+            first_name: data.first_name,
+            last_name: data.last_name
            });
            navigate("/");
         }

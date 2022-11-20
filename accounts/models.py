@@ -8,8 +8,7 @@ class User(AbstractUser):
     pass
 
 class PlayerProfile(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_verified = models.BooleanField(default=True)
     first_name = models.CharField(max_length=20, null=True)
     last_name = models.CharField(max_length=20, null=True)

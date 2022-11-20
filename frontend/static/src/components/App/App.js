@@ -76,7 +76,7 @@ function App() {
         <NavLink userDetails={userDetails} setUserDetails={setUserDetails} />
           <Routes>
             
-              <Route index element={<Home />} />
+              <Route index element={<Home />} /> 
               <Route
               path="login"
               element={<LoginForm setUserDetails={setUserDetails} />}

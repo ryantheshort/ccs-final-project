@@ -47,7 +47,6 @@ function Navbar(props) {
           const data = await response.json();
           Cookies.remove("Authorization");
           localStorage.removeItem('username');
-          navigate("/login/")
           setUserDetails({
             isAuth: false,
             username: null
