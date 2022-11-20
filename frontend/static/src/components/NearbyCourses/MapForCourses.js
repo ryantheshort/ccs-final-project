@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, InfoWindow, LoadScript, DirectionsService, DirectionsRenderer, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-const google = window.google;
+/*global google*/
 const markers = [
 
     {
