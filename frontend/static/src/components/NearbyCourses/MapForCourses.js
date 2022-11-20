@@ -58,11 +58,11 @@ const markers = [
         name: "The Firecracker",
         position: {lat: 34.691507, lng: -82.210274}
     },
-    {
-        id: "11",
-        name: "Dacusville Disc Golf Course",
-        positon: {lat: 34.913918, lng: -82.544487}
-    },
+    // {
+    //     id: "11",
+    //     name: "Dacusville DGC",
+    //     positon: {lat: 34.913918, lng: -82.544487}
+    // },
     {
         id: "12",
         name: "Easley High School",
@@ -82,7 +82,7 @@ const markers = [
         id: "15",
         name: "Foothills",
         position: {lat: 34.804100, lng: -82.585300}
-    },
+    }
 ];
 
 // const center = {
