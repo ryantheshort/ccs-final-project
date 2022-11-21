@@ -6,22 +6,35 @@ import '../../styles/LiveScorecard.css';
 import { useParams } from 'react-router-dom';
 function Livescorecard(props) {
 
-  const course = useState("");
+  const course = useState();
   const players = useState([]);
   const date = useState("");
   const {holeID, scorecardID} = useParams();
-  const {holes, setHoles} = useState([]);
-  const [scoreData, setScoreData] = useState();
+  const [hole, setHole] = useState();
+  const {par, setPar} = useState([]);
   const { userDetails, setUserDetails } = props;
-  const {scorecard, setScorecard} = useState([]);
-
+  const [scorecard, setScorecard] = useState();
+  
+  const [info, setInfo] = useState(null);
 
 // useEffect(() => {
 //   fetch(`/api/v1/scorecards/${holeID}`)
-//   .then((response) => response.json());
+//   .then((response) => response.json())
   
-//   // .then((data => console.log(data)))
+//   .then((data => setScorecard(data)))
 // })
+
+// useEffect(() => {
+//   fetch(`/api/v1/scorecards/${holeID}`)
+//     .then(response => {
+//       return response.json();
+//     })
+//     .then((data) => {
+      
+      
+//     })
+//     const [scoreData] = data.hole;
+// }, []);
 
 useEffect(() => {
   fetch(`/api/v1/scorecards/${holeID}`)
@@ -29,8 +42,8 @@ useEffect(() => {
       return response.json();
     })
     .then((data) => {
-      
-      console.log(data.course);
+     setScorecard();
+    
     })
 }, []);
 
@@ -42,11 +55,30 @@ useEffect(() => {
   //   updatedScoreData.push(data);
   //   setScoreData(updatedScoreData);
   // };
+//   const myClasses = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '15', '16', '17', '18']
+//   const rows = ['hole', 'par', 'distance','player1Score', 'player2Score', 'player3Score', 'player4Score']
 
-  
+// // Select the DIV table container
+//   const tableContainer = document.querySelector('#table');
+
+// // Create the table elements
+//   const table = document.createElement('table');
+//   const headerContainter = document.createElement('thead');
+//   const headerRow = document.createElement('tr');
+    
   return (
-    <div className="container-table">
-      <Table responsive striped="columns">
+    
+   
+
+    // headers.forEach(headerText => {
+    //    let header = document.createElement('th');
+    //    myClasses.forEach(className => header.classList.add(className));
+    //    let textNode = document.createTextNode(headerText);          
+    //    header.appendChild(textNode);
+    //    headerRow.appendChild(header);
+    // });
+    <div className="table-container">
+       <Table responsive striped="columns">
         <thead>
           <tr>
             <th scope="row">Hole</th>
@@ -156,24 +188,23 @@ useEffect(() => {
             <td>{scorecard?.hole17?.player2Score}</td>
             <td>{scorecard?.hole18?.player2Score}</td>
           </tr>
-        </tbody>
+        </tbody> */
       </Table>
-      
-    </div>
+      </div>
+   
     
   );
 
 };
-{/* <Table responsive="sm">
-<thead>
-  <tr>HOLE</tr>
-  <tr>DISTANCE</tr>
-  <tr>Par</tr>
-  <tr>{userDetails && userDetails.username}</tr>
-</thead>
-<tbody>{tableColumns}</tbody>
-</Table> */}
-
+//  <Table responsive="sm">
+// <thead>
+//   <tr>HOLE</tr>
+//   <tr>DISTANCE</tr>
+//   <tr>Par</tr>
+//   <tr>{userDetails && userDetails.username}</tr>
+// </thead>
+// <tbody>{tableColumns}</tbody>
+// </Table> 
   //   <Table responsive="md">
   //     <thead>
   //       <tr className='table-hole'>

@@ -10,9 +10,9 @@ class Scorecard(models.Model):
 
 
 class Hole(models.Model):
-    number = models.IntegerField()
-    par = models.IntegerField()
-    distance = models.IntegerField()
+    number = models.IntegerField(blank=True, default=0)
+    par = models.IntegerField(blank=True, default=0)
+    distance = models.IntegerField(blank=True, default=0)
     hole = models.IntegerField(blank=True, default=0)
     player1Score = models.IntegerField(blank=True, default=0)
     player2Score = models.IntegerField(blank=True, default=0)

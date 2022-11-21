@@ -93,7 +93,7 @@ function LiveHolesScorecard(props) {
 
   const [hole, setHole] = useState({
     scorecard: holeID,
-    hole: null, 
+    hole: 0, 
     number: 1,
     par: "",
     distance: "",
