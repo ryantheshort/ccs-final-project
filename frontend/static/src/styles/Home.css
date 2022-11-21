@@ -1,4 +1,4 @@
-
+@media (max-width: 899px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 
 
 
@@ -12,19 +12,27 @@ main {
 
 .home-page {
     background-repeat: no-repeat;
-    background-image: url("../../src/components/Images/FeatureCardlogo.png");
-    background-size: cover;
+    background-image: linear-gradient(#0b0b0b, #3d3d3d);
+    
     background-position: center;
+
 }
 
-.home-buttons {
-    background-color: linear-gradient(#946f3c, #dece8c);
+
+.home-login {
+    color: linear-gradient(#946f3c, #dece8c);
 }
 
 .fclogo {
     object-fit: contain;
     object-position: center;
 }
-
-
-
+}
+@media (min-width: 900px){
+.home-page {
+    background-repeat: no-repeat;
+    background-image: url("../../src/components/Images/FeatureCardlogo.png");
+    background-size: cover;
+    background-position: center;
+}
+}

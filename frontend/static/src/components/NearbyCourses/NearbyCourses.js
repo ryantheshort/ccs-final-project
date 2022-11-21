@@ -6,6 +6,7 @@ function NearbyCourses() {
 
     return (
         <div id="mapContainer">
+            <h2 className="nearCourses">NEARBY COURSES</h2>
             <div id="mapClipPath">
         
         

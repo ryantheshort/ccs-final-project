@@ -1,5 +1,6 @@
 import Nav from "react-bootstrap/Nav";
-
+import Button from "react-bootstrap/Button";
+// import  from "../Images/basketmarker.png";
 import "../../styles/Home.css";
 
 function Home() {
@@ -8,8 +9,9 @@ function Home() {
             
             
             <div className="home-buttons">
-                <Nav.Link className="login-form btn-hover" href="/login">Player Login</Nav.Link>
+                <Button className="home-login"><Nav.Link className="login-form btn-hover" href="/login">Player Login</Nav.Link></Button>
             </div>
+            {/* <div><img className="basket-logo" src="" /> </div> */}
         </main>
     );
 }

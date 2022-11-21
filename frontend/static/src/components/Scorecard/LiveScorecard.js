@@ -9,27 +9,26 @@ function Livescorecard(props) {
   const course = useState("");
   const players = useState([]);
   const date = useState("");
-  const {hole} = useParams();
+  const {holeID} = useParams();
 
   const [scoreData, setScoreData] = useState();
   const { userDetails, setUserDetails, scorecard } = props;
-  console.log(scorecard)
-  console.log(props)
-
-// useEffect(() => {
-//   fetch("/api/v1/scorecards/holes/")
-//   .then((response) => response.json())
-//   .then((item) => )
-// })
 
 
-  const holeData = (data) => {
-    const totalHoles = scoreData.length;
-    data.id = totalHoles + 1;
-    const updatedScoreData = [...scoreData];
-    updatedScoreData.push(data);
-    setScoreData(updatedScoreData);
-  };
+useEffect(() => {
+  fetch(`/api/v1/scorecards/${holeID}`)
+  .then((response) => response.json())
+  // .then((data => console.log(data)))
+})
+
+
+  // const holeData = (data) => {
+  //   const totalHoles = scoreData.length;
+  //   data.id = totalHoles + 1;
+  //   const updatedScoreData = [...scoreData];
+  //   updatedScoreData.push(data);
+  //   setScoreData(updatedScoreData);
+  // };
 
   
   return (
