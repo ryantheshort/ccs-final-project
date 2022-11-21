@@ -191,7 +191,6 @@ function LiveHolesScorecard(props) {
   const scoreInputs = players?.map((player, index) => (
     <p className="player-text">
       {player.username}
-      {player.username}
       <Button className="control__btn" id={player.id} name={`player${index + 1}Score`} onClick={DecrementCount}>
         -
       </Button>

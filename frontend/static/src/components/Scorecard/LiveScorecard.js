@@ -2,24 +2,37 @@ import Table from 'react-bootstrap/Table';
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { handleError } from "../../utils/helpers";
-
+import '../../styles/LiveScorecard.css';
 import { useParams } from 'react-router-dom';
 function Livescorecard(props) {
 
   const course = useState("");
   const players = useState([]);
   const date = useState("");
-  const {holeID} = useParams();
-
+  const {holeID, scorecardID} = useParams();
+  const {holes, setHoles} = useState([]);
   const [scoreData, setScoreData] = useState();
-  const { userDetails, setUserDetails, scorecard } = props;
+  const { userDetails, setUserDetails } = props;
+  const {scorecard, setScorecard} = useState([]);
 
+
+// useEffect(() => {
+//   fetch(`/api/v1/scorecards/${holeID}`)
+//   .then((response) => response.json());
+  
+//   // .then((data => console.log(data)))
+// })
 
 useEffect(() => {
   fetch(`/api/v1/scorecards/${holeID}`)
-  .then((response) => response.json())
-  // .then((data => console.log(data)))
-})
+    .then(response => {
+      return response.json();
+    })
+    .then((data) => {
+      
+      console.log(data.course);
+    })
+}, []);
 
 
   // const holeData = (data) => {
@@ -55,9 +68,10 @@ useEffect(() => {
             <th scope="col">16</th>
             <th scope="col">17</th>
             <th scope="col">18</th>
+            <th scope="col">TOTAL</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="data-output">
           <tr>
             <th scope="row">PAR</th>
             <td>{scorecard?.hole1?.par}</td>
@@ -101,29 +115,52 @@ useEffect(() => {
             <td>{scorecard?.hole18?.distance}</td>
           </tr>
           <tr>
-          <th scope="row">{userDetails && userDetails.username}</th>
-            <td>{scorecard?.hole1?.score}</td>
-            <td>{scorecard?.hole2?.score}</td>
-            <td>{scorecard?.hole3?.score}</td>
-            <td>{scorecard?.hole4?.score}</td>
-            <td>{scorecard?.hole5?.score}</td>
-            <td>{scorecard?.hole6?.score}</td>
-            <td>{scorecard?.hole7?.score}</td>
-            <td>{scorecard?.hole8?.score}</td>
-            <td>{scorecard?.hole9?.score}</td>
-            <td>{scorecard?.hole10?.score}</td>
-            <td>{scorecard?.hole11?.score}</td>
-            <td>{scorecard?.hole12?.score}</td>
-            <td>{scorecard?.hole13?.score}</td>
-            <td>{scorecard?.hole14?.score}</td>
-            <td>{scorecard?.hole15?.score}</td>
-            <td>{scorecard?.hole16?.score}</td>
-            <td>{scorecard?.hole17?.score}</td>
-            <td>{scorecard?.hole18?.score}</td>
+          <th scope="row">{userDetails && userDetails.username}Player1:</th>
+            <td>{scorecard?.hole1?.player1Score}</td>
+            <td>{scorecard?.hole2?.player1Score}</td>
+            <td>{scorecard?.hole3?.player1Score}</td>
+            <td>{scorecard?.hole4?.player1Score}</td>
+            <td>{scorecard?.hole5?.player1Score}</td>
+            <td>{scorecard?.hole6?.player1Score}</td>
+            <td>{scorecard?.hole7?.player1Score}</td>
+            <td>{scorecard?.hole8?.player1Score}</td>
+            <td>{scorecard?.hole9?.player1Score}</td>
+            <td>{scorecard?.hole10?.player1Score}</td>
+            <td>{scorecard?.hole11?.player1Score}</td>
+            <td>{scorecard?.hole12?.player1Score}</td>
+            <td>{scorecard?.hole13?.player1Score}</td>
+            <td>{scorecard?.hole14?.player1Score}</td>
+            <td>{scorecard?.hole15?.player1Score}</td>
+            <td>{scorecard?.hole16?.player1Score}</td>
+            <td>{scorecard?.hole17?.player1Score}</td>
+            <td>{scorecard?.hole18?.player1Score}</td>
+          </tr>
+          <tr>
+          <th scope="row">{userDetails && userDetails.username}Player2:</th>
+            <td>{scorecard?.hole1?.player2Score}</td>
+            <td>{scorecard?.hole2?.player2Score}</td>
+            <td>{scorecard?.hole3?.player2Score}</td>
+            <td>{scorecard?.hole4?.player2Score}</td>
+            <td>{scorecard?.hole5?.player2Score}</td>
+            <td>{scorecard?.hole6?.player2Score}</td>
+            <td>{scorecard?.hole7?.player2Score}</td>
+            <td>{scorecard?.hole8?.player2Score}</td>
+            <td>{scorecard?.hole9?.player2Score}</td>
+            <td>{scorecard?.hole10?.player2Score}</td>
+            <td>{scorecard?.hole11?.player2Score}</td>
+            <td>{scorecard?.hole12?.player2Score}</td>
+            <td>{scorecard?.hole13?.player2Score}</td>
+            <td>{scorecard?.hole14?.player2Score}</td>
+            <td>{scorecard?.hole15?.player2Score}</td>
+            <td>{scorecard?.hole16?.player2Score}</td>
+            <td>{scorecard?.hole17?.player2Score}</td>
+            <td>{scorecard?.hole18?.player2Score}</td>
           </tr>
         </tbody>
       </Table>
+      
     </div>
+    
   );
 
 };
